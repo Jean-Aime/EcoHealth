@@ -8,8 +8,9 @@ import { useEffect, useReducer } from 'react';
  * `/about` on first load so nothing previously shared breaks.
  *
  * Static hosts need a single-page-app fallback to index.html. This project
- * ships `public/.htaccess` (Apache) and `public/_redirects` (Netlify/Cloudflare
- * Pages) for that; Vite's dev server handles it automatically.
+ * ships `public/.htaccess` (Apache), `public/_redirects` (Netlify/Cloudflare
+ * Pages), and `vercel.json` (Vercel) for that; Vite's dev server handles it
+ * automatically.
  */
 
 type Listener = () => void;

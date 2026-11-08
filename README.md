@@ -93,6 +93,7 @@ Upload the contents of `dist/`. The build is a single-page app with clean URLs, 
 
 - **Apache / XAMPP** — `public/.htaccess` is copied into the build.
 - **Netlify / Cloudflare Pages** — `public/_redirects` is copied into the build.
+- **Vercel** — import the GitHub repository and use the Vite preset, `npm run build` as the build command, and `dist` as the output directory. `vercel.json` configures the SPA fallback. Set the `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`, and `VITE_SITE_URL` environment variables in the Vercel project before deploying.
 - **Other hosts** — configure an equivalent SPA fallback.
 
 Set `VITE_SITE_URL` before building so the sitemap, canonical URLs and Open Graph tags use the live domain (the fallback is `https://www.ecohealth.rw`).
