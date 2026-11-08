@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    @apply bg-ivory text-charcoal font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv01', 'cv02';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-forest text-white;
+  }
+
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-forest;
+  }
+
+  /* Refined scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-ivory-200;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-sage-dark rounded-full border-2 border-ivory-200;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-forest-400;
+  }
+}
+
+@layer components {
+  .container-prose {
+    @apply max-w-prose;
+  }
+
+  .eyebrow {
+    @apply text-xs font-medium uppercase tracking-widest text-forest-600;
+  }
+
+  .eyebrow-muted {
+    @apply text-xs font-medium uppercase tracking-widest text-muted;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-charcoal/10;
+  }
+
+  .hairline-light {
+    @apply h-px w-full bg-white/15;
+  }
+
+  .link-underline {
+    @apply relative inline-block;
+  }
+  .link-underline::after {
+    content: '';
+    @apply absolute left-0 -bottom-0.5 h-px w-0 bg-current transition-all duration-500 ease-elegant;
+  }
+  .link-underline:hover::after {
+    @apply w-full;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-none bg-forest-600 px-7 py-3.5 text-sm font-medium uppercase tracking-wider text-white transition-all duration-500 ease-elegant hover:bg-forest-800 hover:gap-3.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest-600;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-none border border-charcoal/20 bg-transparent px-7 py-3.5 text-sm font-medium uppercase tracking-wider text-charcoal transition-all duration-500 ease-elegant hover:border-charcoal hover:bg-charcoal hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-charcoal;
+  }
+
+  .btn-ghost-light {
+    @apply inline-flex items-center justify-center gap-2.5 rounded-none border border-white/30 bg-transparent px-7 py-3.5 text-sm font-medium uppercase tracking-wider text-white transition-all duration-500 ease-elegant hover:border-white hover:bg-white hover:text-charcoal;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Reveal-on-scroll utility */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+  .reveal-delay-5 { transition-delay: 0.5s; }
+
+  .image-cover {
+    @apply h-full w-full object-cover;
+  }
+
+  .grain-overlay {
+    position: relative;
+  }
+  .grain-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' /%3E%3C/svg%3E");
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
