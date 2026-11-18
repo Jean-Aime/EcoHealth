@@ -1,43 +1,38 @@
-import { ArrowRight, FileText, Shield, Leaf, Truck, Wifi, Recycle } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from '@/lib/router';
 import { Reveal } from '@/components/Reveal';
 import { PageHero, ServiceCTA } from '@/components/PageHero';
 import { SEO } from '@/components/SEO';
-import { SmartImage } from '@/components/SmartImage';
 import { services, servicePaths } from '@/data/content';
 import { usePublishedContent, type CaseStudyRecord } from '@/lib/cms';
+import { ArtImage, ArrowLink, SectionMarker } from '@/components/motion';
 
 const heroImage = 'https://images.pexels.com/photos/14053428/pexels-photo-14053428.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const fieldImage = 'https://images.pexels.com/photos/10365944/pexels-photo-10365944.jpeg?auto=compress&cs=tinysrgb&w=1400';
 
 const capabilityAreas = [
   {
-    icon: Shield,
-    title: 'EHS & Safety Supervision',
+    title: 'EHS & safety supervision',
     body: 'Site safety inspections, risk assessments, compliance auditing, and embedded safety supervision for active projects.',
   },
   {
-    icon: Leaf,
-    title: 'Environmental Management',
-    body: 'Environmental impact assessments, management plans, monitoring, and reporting for projects in sensitive contexts.',
+    title: 'Environmental management',
+    body: 'Environmental screening, management plans, monitoring, and reporting; formal assessments or approvals are coordinated with authorised specialists where required.',
   },
   {
-    icon: Wifi,
-    title: 'Technical Field Support',
+    title: 'Technical field support',
     body: 'Deployment, inspection, and safety supervision for telecommunications and infrastructure field work.',
   },
   {
-    icon: Truck,
-    title: 'Transport & Fleet Safety',
+    title: 'Transport & fleet safety',
     body: 'Fleet safety policies, driver training, journey management, and transport risk assessment.',
   },
   {
-    icon: Recycle,
-    title: 'Waste & E-Waste Solutions',
+    title: 'Waste & e-waste solutions',
     body: 'Waste management planning, e-waste responsible disposal, and segregation guidance for sites and facilities.',
   },
   {
-    icon: FileText,
-    title: 'Documentation & Reporting',
+    title: 'Documentation & reporting',
     body: 'Clear, traceable records that support compliance, tender responses, and continuous improvement.',
   },
 ];
@@ -52,136 +47,171 @@ export function ProjectsPage() {
         description="Explore EcoHealth's capabilities across EHS, environmental management, training, telecommunications field support, transport safety, and waste management."
         path="/projects"
       />
+
       <PageHero
-        eyebrow="Projects & Experience"
-        title="A foundation of practical, field-tested capability."
-        subtitle="Our experience spans EHS consultancy, environmental management, training, technical field support, transport safety, and waste solutions. Approved case studies appear here as they are verified for publication."
+        eyebrow="Projects & experience"
+        title="A clear view of our service capabilities."
+        titleLines={['A clear view of', 'our service', 'capabilities.']}
+        subtitle="Our service scope covers EHS consultancy, environmental management, training, technical field support, transport safety, and waste solutions. Approved case studies appear here once verified for publication."
         image={heroImage}
-        imageAlt="Workers in safety vests operating heavy machinery at a night construction site"
+        imageAlt="Workers in safety vests operating machinery at a night construction site"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Projects' }]}
+        index="04"
+        meta={['EHS', 'Environment', 'Field support', 'Transport', 'Waste']}
       />
 
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
-          <Reveal>
-            <div className="max-w-2xl">
-              <p className="eyebrow">Capabilities</p>
-              <h2 className="mt-5 font-display text-display-md text-charcoal text-balance">
-                Where we bring value to projects.
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-muted text-pretty">
-                These are the disciplines we deliver across the project lifecycle — as standalone scopes or integrated
-                programme support.
-              </p>
+      {/* Capability dossier */}
+      <section className="bg-ivory py-20 lg:py-28">
+        <div className="shell">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <Reveal>
+                <div className="lg:sticky lg:top-28">
+                  <SectionMarker index="01" label="Capabilities" />
+                  <h2 className="mt-6 max-w-xs font-display text-display-md text-charcoal">
+                    Where we bring value to projects.
+                  </h2>
+                  <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
+                    These are the disciplines we deliver across the project lifecycle — as standalone scopes or
+                    integrated programme support.
+                  </p>
+                  <div className="mt-8">
+                    <ArrowLink to="/services">See the six service lines</ArrowLink>
+                  </div>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
 
-          <div className="mt-14 grid gap-px bg-charcoal/10 sm:grid-cols-2 lg:grid-cols-3">
-            {capabilityAreas.map((area, i) => {
-              const Icon = area.icon;
-              return (
-                <Reveal key={area.title} delay={((i % 3) + 1) as 1 | 2 | 3} className="bg-ivory p-8">
-                  <Icon className="h-7 w-7 text-forest-600" strokeWidth={1.5} />
-                  <h3 className="mt-5 font-display text-lg font-semibold text-charcoal">{area.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted text-pretty">{area.body}</p>
-                </Reveal>
-              );
-            })}
+            <div className="lg:col-span-8">
+              <div className="border-t border-charcoal/15">
+                {capabilityAreas.map((area, index) => (
+                  <Reveal key={area.title} delay={((index % 3) + 1) as 1 | 2 | 3}>
+                    <div className="group grid gap-4 border-b border-charcoal/15 py-7 sm:grid-cols-12 sm:gap-6 sm:py-8">
+                      <div className="sm:col-span-2">
+                        <span className="font-serif text-3xl italic leading-none text-forest-700/30 transition-colors duration-500 group-hover:text-forest-700">
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                      <h3 className="font-display text-lg font-medium leading-snug text-charcoal sm:col-span-4">
+                        {area.title}
+                      </h3>
+                      <p className="text-[13.5px] leading-relaxed text-muted sm:col-span-6">{area.body}</p>
+                    </div>
+                  </Reveal>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {caseStudies.length > 0 ? (
-        <section className="bg-sage-light border-t border-charcoal/10">
-          <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
-            <Reveal>
-              <div className="max-w-2xl">
-                <p className="eyebrow">Selected experience</p>
-                <h2 className="mt-5 font-display text-display-md text-charcoal text-balance">
-                  Verified case studies, published with integrity.
-                </h2>
-                <p className="mt-5 text-base leading-relaxed text-muted text-pretty">
-                  Each entry below has been approved for publication. Where a client cannot be named, the case study is
-                  published on an anonymised basis.
-                </p>
-              </div>
-            </Reveal>
+        <section className="border-t border-charcoal/10 bg-paper py-20 lg:py-28">
+          <div className="shell">
+            <div className="flex flex-col justify-between gap-6 border-b border-charcoal/15 pb-8 sm:flex-row sm:items-end">
+              <Reveal>
+                <div>
+                  <SectionMarker index="02" label="Selected experience" />
+                  <h2 className="mt-6 max-w-xl font-display text-display-md text-charcoal">
+                    Verified case studies, published with integrity.
+                  </h2>
+                </div>
+              </Reveal>
+              <p className="max-w-xs text-[11px] leading-relaxed text-muted">
+                Each entry has been approved for publication. Where a client cannot be named, the case study is
+                published on an anonymised basis.
+              </p>
+            </div>
 
-            <div className="mt-16 space-y-16 lg:space-y-24">
+            <div className="mt-14 space-y-16 lg:space-y-24">
               {caseStudies.map((study, index) => (
-                <CaseStudy key={study.id} study={study} reversed={index % 2 === 1} />
+                <CaseStudy key={study.id} study={study} reversed={index % 2 === 1} index={index} />
               ))}
             </div>
           </div>
         </section>
       ) : (
-        <section className="bg-sage-light">
-          <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
-            <Reveal>
-              <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-                <div className="lg:col-span-5">
-                  <p className="eyebrow">Case studies</p>
-                  <h2 className="mt-5 font-display text-display-md text-charcoal text-balance">
-                    Verified case studies, published with integrity.
-                  </h2>
-                </div>
-                <div className="lg:col-span-7">
-                  <p className="text-lg leading-relaxed text-charcoal-light text-pretty">
-                    We present approved project case studies — with verified scope, responsibilities, and outcomes —
-                    once they have been reviewed for publication. We do not publish invented projects, client names, or
-                    statistics.
-                  </p>
-                  <p className="mt-4 text-base leading-relaxed text-muted text-pretty">
-                    If you are a procurement team or contractor evaluating EcoHealth for a specific scope, please contact
-                    us directly. We will share relevant experience and capabilities under appropriate confidentiality.
-                  </p>
-                  <div className="mt-8">
+        <section className="grain-overlay relative overflow-hidden bg-forest-950 text-ivory">
+          <div className="grid lg:grid-cols-12">
+            <div className="relative min-h-[24rem] lg:col-span-5 lg:min-h-[40rem]">
+              <ArtImage
+                src={fieldImage}
+                alt="Workers in high-visibility vests walking through a forested landscape"
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                width={1200}
+                height={1500}
+                parallax={28}
+                className="absolute inset-0 h-full w-full"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-forest-950/80 via-transparent to-transparent" />
+              <p className="absolute bottom-6 left-6 right-6 text-[9.5px] font-semibold uppercase tracking-[0.18em] text-ivory/55">
+                Illustrative field operations
+              </p>
+            </div>
+
+            <div className="px-5 py-20 sm:px-8 lg:col-span-7 lg:px-14 lg:py-28">
+              <Reveal>
+                <SectionMarker index="02" label="Case studies" tone="light" />
+                <h2 className="mt-6 max-w-lg font-display text-display-md text-ivory">
+                  Verified case studies, published with integrity.
+                </h2>
+                <p className="mt-5 max-w-xl text-sm leading-relaxed text-ivory/60">
+                  We present approved project case studies — with verified scope, responsibilities, and outcomes — once
+                  they have been reviewed for publication. We do not publish invented projects, client names, or
+                  statistics.
+                </p>
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-ivory/45">
+                  If you are a procurement team or contractor evaluating EcoHealth for a specific scope, contact us
+                  directly. We will share relevant experience and capabilities under appropriate confidentiality.
+                </p>
+
+                <div className="mt-9 border-t border-white/15 pt-6">
+                  <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
                     <Link
                       to="/contact?enquiry=partnership"
-                      className="group inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-forest-700"
+                      className="group inline-flex items-center gap-3 bg-ivory px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-forest-950 transition-all duration-500 hover:gap-5 hover:bg-white"
                     >
-                      <span className="link-underline">Request experience details</span>
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                      Request experience details
+                      <ArrowRight className="h-4 w-4" />
                     </Link>
+                    <ArrowLink to="/partners" tone="light">
+                      Procurement information
+                    </ArrowLink>
                   </div>
+                  <p className="mt-6 text-[10px] uppercase tracking-[0.16em] text-ivory/35">
+                    Publication status · Awaiting approved case studies
+                  </p>
                 </div>
-              </div>
-            </Reveal>
-
-            <Reveal delay={1}>
-              <div className="mt-14 grid gap-px bg-charcoal/10 sm:grid-cols-2 lg:grid-cols-3">
-                {[1, 2, 3].map((n) => (
-                  <div
-                    key={n}
-                    className="flex aspect-[4/3] items-center justify-center border border-dashed border-charcoal/15 bg-ivory/50 p-8 text-center"
-                  >
-                    <p className="text-sm text-muted">
-                      Case study {String(n).padStart(2, '0')}
-                      <br />
-                      <span className="text-xs">Pending approval</span>
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
         </section>
       )}
 
-      <section className="bg-ivory border-t border-charcoal/10">
-        <div className="mx-auto max-w-8xl px-6 py-20 lg:px-10 lg:py-24">
-          <p className="eyebrow">Explore by service</p>
-          <div className="mt-8 grid gap-px bg-charcoal/10 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service, i) => (
-              <Reveal key={service.slug} delay={((i % 3) + 1) as 1 | 2 | 3} className="bg-ivory">
-                <Link to={servicePaths[service.slug]} className="group flex h-full flex-col p-7">
-                  <span className="font-display text-sm font-bold text-forest-600">{service.index}</span>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-charcoal">{service.shortTitle}</h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted text-pretty">{service.summary}</p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-forest-700">
-                    <span className="link-underline">View service</span>
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+      {/* Cross-links by service */}
+      <section className="bg-ivory py-16 lg:py-20">
+        <div className="shell">
+          <div className="flex items-end justify-between gap-6">
+            <Reveal>
+              <SectionMarker index="03" label="Explore by service" />
+            </Reveal>
+            <ArrowLink to="/services">All services</ArrowLink>
+          </div>
+
+          <div className="mt-8 grid border-t border-charcoal/15 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <Reveal key={service.slug}>
+                <Link
+                  to={servicePaths[service.slug]}
+                  className="group flex items-center justify-between gap-4 border-b border-charcoal/15 py-4 pr-4 transition-colors hover:text-forest-800 sm:even:pl-5"
+                >
+                  <span className="flex items-baseline gap-3">
+                    <span className="text-[9px] font-semibold tabular-nums text-muted">{service.index}</span>
+                    <span className="font-display text-[15px] font-medium text-charcoal transition-colors group-hover:text-forest-800">
+                      {service.shortTitle}
+                    </span>
                   </span>
+                  <ArrowRight className="h-3.5 w-3.5 text-muted transition-transform duration-500 group-hover:translate-x-1 group-hover:text-forest-700" />
                 </Link>
               </Reveal>
             ))}
@@ -198,45 +228,50 @@ export function ProjectsPage() {
   );
 }
 
-function CaseStudy({ study, reversed }: { study: CaseStudyRecord; reversed: boolean }) {
+function CaseStudy({
+  study,
+  reversed,
+  index,
+}: {
+  study: CaseStudyRecord;
+  reversed: boolean;
+  index: number;
+}) {
   const meta = [study.industry, study.location].filter(Boolean);
 
   return (
     <Reveal>
-      <article className="grid gap-10 lg:grid-cols-12 lg:gap-16 lg:items-start">
+      <article className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-14">
         {study.image && (
           <div className={`lg:col-span-6 ${reversed ? 'lg:order-2' : ''}`}>
-            <div className="relative aspect-[4/3] overflow-hidden bg-charcoal/5">
-              <SmartImage
+            <div className="relative">
+              <ArtImage
                 src={study.image}
                 alt={study.imageAlt || study.title}
                 sizes="(min-width: 1024px) 45vw, 100vw"
                 width={1200}
                 height={900}
-                className="image-cover"
+                className="aspect-[4/3]"
               />
+              <span className="absolute left-0 top-0 z-10 flex h-14 w-14 items-center justify-center bg-forest-800 font-display text-sm tabular-nums text-ivory">
+                {String(index + 1).padStart(2, '0')}
+              </span>
             </div>
           </div>
         )}
 
         <div className={`${study.image ? 'lg:col-span-6' : 'lg:col-span-12'} ${reversed ? 'lg:order-1' : ''}`}>
-          <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest text-muted">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[9.5px] font-semibold uppercase tracking-[0.16em] text-muted">
             {meta.map((item) => (
-              <span key={item} className="border border-charcoal/15 px-3 py-1">
-                {item}
-              </span>
+              <span key={item}>{item}</span>
             ))}
-            {study.confidential && (
-              <span className="border border-forest-600/30 bg-forest-50 px-3 py-1 text-forest-800">
-                Client confidential
-              </span>
-            )}
+            {study.confidential && <span className="text-forest-700">Client confidential</span>}
           </div>
 
-          <h3 className="mt-5 font-display text-display-sm text-charcoal text-balance">{study.title}</h3>
-          <p className="mt-4 text-lg leading-relaxed text-charcoal-light text-pretty">{study.scope}</p>
+          <h3 className="mt-4 max-w-xl font-display text-display-sm text-charcoal">{study.title}</h3>
+          <p className="mt-4 max-w-xl text-[14.5px] leading-relaxed text-charcoal-light">{study.scope}</p>
 
-          <div className="mt-8 grid gap-8 border-t border-charcoal/10 pt-8 sm:grid-cols-3">
+          <div className="mt-8 grid gap-8 border-t border-charcoal/15 pt-7 sm:grid-cols-3">
             <CaseStudyList title="Responsibilities" items={study.responsibilities} />
             <CaseStudyList title="Approach" items={study.approach} />
             <CaseStudyList title="Outcomes" items={study.outcomes} />
@@ -251,11 +286,11 @@ function CaseStudyList({ title, items }: { title: string; items: string[] }) {
   if (items.length === 0) return null;
   return (
     <div>
-      <h4 className="text-xs font-medium uppercase tracking-widest text-charcoal">{title}</h4>
-      <ul className="mt-4 space-y-3">
+      <h4 className="text-[9.5px] font-semibold uppercase tracking-[0.16em] text-charcoal">{title}</h4>
+      <ul className="mt-3 space-y-2.5">
         {items.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-sm leading-relaxed text-muted">
-            <span className="mt-2 h-1 w-1 flex-shrink-0 bg-forest-600" />
+          <li key={item} className="flex items-start gap-2.5 text-[12.5px] leading-relaxed text-muted">
+            <span className="mt-[0.5rem] h-px w-3 shrink-0 bg-forest-600" aria-hidden="true" />
             {item}
           </li>
         ))}

@@ -1,13 +1,14 @@
-import { ArrowRight, Check, Download } from 'lucide-react';
-import { Link } from '@/lib/router';
+import { Download, Plus } from 'lucide-react';
 import { Reveal } from '@/components/Reveal';
 import { PageHero, ServiceCTA } from '@/components/PageHero';
 import { SEO } from '@/components/SEO';
 import { EnquiryForm } from '@/components/EnquiryForm';
 import { partnersContent } from '@/data/content';
 import { useSiteSettings } from '@/lib/cms';
+import { ArtImage, ArrowLink, SectionMarker } from '@/components/motion';
 
 const heroImage = 'https://images.pexels.com/photos/8487399/pexels-photo-8487399.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const partnershipImage = 'https://images.pexels.com/photos/8487361/pexels-photo-8487361.jpeg?auto=compress&cs=tinysrgb&w=1400';
 
 export function PartnersPage() {
   const settings = useSiteSettings();
@@ -19,80 +20,108 @@ export function PartnersPage() {
         description="EcoHealth works with contractors, principals, and procurement teams as a specialist partner for safety, environmental, and field operations in Rwanda."
         path="/partners"
       />
+
       <PageHero
-        eyebrow="Partners & Procurement"
+        eyebrow="Partners & procurement"
         title="A capable local partner for contractors and procurement teams."
+        titleLines={['A capable local', 'partner for contractors', 'and procurement teams.']}
         subtitle={partnersContent.intro}
         image={heroImage}
-        imageAlt="Two engineers wearing helmets and safety vests, embodying strength and professionalism"
-        breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Partners & Procurement' }]}
+        imageAlt="Two engineers in helmets and safety vests on site"
+        breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Partners & procurement' }]}
+        variant="split"
+        index="06"
+        meta={['Subcontracting', 'Procurement', 'Strategic partnership']}
       />
 
-      {/* Subcontracting capabilities */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
+      {/* Subcontracting */}
+      <section className="bg-ivory py-20 lg:py-28">
+        <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-4">
-              <p className="eyebrow">Subcontracting</p>
-              <h2 className="mt-5 font-display text-display-md text-charcoal text-balance">
-                Specialist scopes, delivered as part of your team.
-              </h2>
-              <p className="mt-6 text-base leading-relaxed text-muted text-pretty">
-                We engage as a subcontractor on prime contractor projects — providing safety, environmental, training,
-                technical field, and transport safety support under your overall programme.
-              </p>
-            </Reveal>
-            <div className="lg:col-span-8">
-              <Reveal delay={1}>
-                <div className="border-t border-charcoal/10">
-                  {partnersContent.subcontracting.map((item, i) => (
-                    <div key={i} className="flex items-start gap-5 border-b border-charcoal/10 py-6">
-                      <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-forest-600" />
-                      <p className="text-lg leading-relaxed text-charcoal-light text-pretty">{item}</p>
-                    </div>
-                  ))}
+            <div className="lg:col-span-5">
+              <Reveal>
+                <div className="lg:sticky lg:top-28">
+                  <SectionMarker index="01" label="Subcontracting" />
+                  <h2 className="mt-6 max-w-sm font-display text-display-md text-charcoal">
+                    Specialist scopes, delivered as part of your team.
+                  </h2>
+                  <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
+                    We engage as a subcontractor on prime contractor projects — providing safety, environmental,
+                    training, technical field, and transport safety support under your overall programme.
+                  </p>
+                  <div className="mt-8">
+                    <ArtImage
+                      src={partnershipImage}
+                      alt="Two engineers reviewing a project on site"
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                      width={1200}
+                      height={900}
+                      parallax={20}
+                      className="aspect-[4/3]"
+                    />
+                  </div>
                 </div>
               </Reveal>
+            </div>
+
+            <div className="lg:col-span-6 lg:col-start-7">
+              <ol className="border-t border-charcoal/15">
+                {partnersContent.subcontracting.map((item, index) => (
+                  <Reveal key={item} delay={((index % 3) + 1) as 1 | 2 | 3}>
+                    <li className="grid gap-4 border-b border-charcoal/15 py-6 sm:grid-cols-12 sm:gap-5">
+                      <span className="font-serif text-2xl italic leading-none text-forest-700/35 sm:col-span-2">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <p className="text-[14.5px] leading-relaxed text-charcoal-light sm:col-span-10">{item}</p>
+                    </li>
+                  </Reveal>
+                ))}
+              </ol>
+              <div className="mt-8">
+                <ArrowLink to="/projects">See our experience</ArrowLink>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Procurement readiness */}
-      <section className="bg-charcoal text-ivory">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
+      <section className="grain-overlay relative overflow-hidden bg-charcoal py-20 text-ivory lg:py-28">
+        <div className="shell relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
               <Reveal>
-                <p className="eyebrow text-sage-dark">Procurement readiness</p>
-                <h2 className="mt-5 font-display text-display-md text-white text-balance">
+                <SectionMarker index="02" label="Procurement readiness" tone="light" />
+                <h2 className="mt-6 max-w-lg font-display text-display-md text-ivory">
                   Built for tender and procurement processes.
                 </h2>
-                <p className="mt-6 text-lg leading-relaxed text-ivory/65 text-pretty">
+                <p className="mt-5 max-w-xl text-sm leading-relaxed text-ivory/60">
                   We understand what procurement teams and principals need from a specialist partner — clear scopes,
                   documented capabilities, and reliable delivery. We respond to enquiries with the information that
                   matters for your evaluation.
                 </p>
               </Reveal>
-              <Reveal delay={1}>
-                <div className="mt-10 grid gap-px bg-white/10 sm:grid-cols-2">
-                  {partnersContent.procurement.map((item) => (
-                    <div key={item} className="bg-charcoal p-7">
-                      <Check className="h-5 w-5 text-forest-400" />
-                      <p className="mt-3 text-sm leading-relaxed text-ivory/70 text-pretty">{item}</p>
+
+              <div className="mt-9 grid border-t border-white/15 sm:grid-cols-2">
+                {partnersContent.procurement.map((item, index) => (
+                  <Reveal key={item} delay={((index % 2) + 1) as 1 | 2}>
+                    <div className="flex gap-3 border-b border-white/15 py-5 sm:odd:border-r sm:odd:pr-6 sm:even:pl-6">
+                      <Plus className="mt-0.5 h-4 w-4 shrink-0 text-forest-400" aria-hidden="true" />
+                      <p className="text-[13px] leading-relaxed text-ivory/65">{item}</p>
                     </div>
-                  ))}
-                </div>
-              </Reveal>
+                  </Reveal>
+                ))}
+              </div>
             </div>
+
             <div className="lg:col-span-5">
               <Reveal delay={2}>
-                <div className="border border-white/15 p-10">
-                  <p className="text-xs uppercase tracking-widest text-sage-dark">Company profile</p>
-                  <h3 className="mt-4 font-display text-2xl font-semibold text-white">
+                <div className="border border-white/20 p-8 lg:p-10">
+                  <p className="text-[9.5px] font-semibold uppercase tracking-[0.2em] text-sage-dark">Company profile</p>
+                  <h3 className="mt-4 font-display text-2xl font-light text-ivory">
                     {settings.companyProfileUrl ? 'Our company profile' : 'Request our company profile'}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-ivory/60 text-pretty">
+                  <p className="mt-4 text-sm leading-relaxed text-ivory/55">
                     {settings.companyProfileUrl
                       ? 'The approved company profile is available below for procurement teams and contractors.'
                       : 'Our approved company profile document is available to procurement teams and contractors on request, subject to approval.'}
@@ -103,28 +132,23 @@ export function PartnersPage() {
                       href={settings.companyProfileUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-8 inline-flex items-center gap-2 bg-white px-6 py-3 text-sm font-medium uppercase tracking-wider text-forest-800 transition-all duration-500 ease-elegant hover:gap-3"
+                      className="mt-8 inline-flex items-center gap-3 bg-ivory px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-forest-950 transition-all duration-500 hover:gap-5 hover:bg-white"
                     >
                       <Download className="h-4 w-4" />
                       {settings.companyProfileLabel || 'Download company profile'}
                     </a>
                   ) : (
                     <>
-                      <div className="mt-8 border border-dashed border-white/20 p-6 text-center">
-                        <p className="text-sm text-ivory/50">
-                          Company profile PDF
-                          <br />
-                          <span className="text-xs text-ivory/30">Shared on request</span>
+                      <div className="mt-8 border-y border-white/15 py-5">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-ivory/40">
+                          Document status
                         </p>
+                        <p className="mt-1 text-[13px] text-ivory/60">Shared on request · Subject to approval</p>
                       </div>
                       <div className="mt-6">
-                        <Link
-                          to="/contact?enquiry=partnership"
-                          className="group inline-flex items-center gap-2 text-sm font-medium uppercase tracking-wider text-white"
-                        >
-                          <span className="link-underline">Request company profile</span>
-                          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-                        </Link>
+                        <ArrowLink to="/contact?enquiry=partnership" tone="light">
+                          Request company profile
+                        </ArrowLink>
                       </div>
                     </>
                   )}
@@ -136,18 +160,21 @@ export function PartnersPage() {
       </section>
 
       {/* Partnership enquiry */}
-      <section id="partnership-enquiry" className="bg-sage-light scroll-mt-24">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
+      <section id="partnership-enquiry" className="scroll-mt-24 bg-sage-light py-20 lg:py-28">
+        <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-5">
-              <p className="eyebrow">Partnership enquiry</p>
-              <h2 className="mt-5 font-display text-display-md text-charcoal text-balance">
-                Interested in working with EcoHealth?
-              </h2>
-              <p className="mt-6 text-lg leading-relaxed text-charcoal-light text-pretty">
-                Whether you are a prime contractor looking for a specialist subcontractor, a procurement team evaluating
-                suppliers, or an organisation exploring a strategic partnership — we would like to hear from you.
-              </p>
+            <div className="lg:col-span-5">
+              <Reveal>
+                <SectionMarker index="03" label="Partnership enquiry" />
+                <h2 className="mt-6 max-w-md font-display text-display-md text-charcoal">
+                  Interested in working with EcoHealth?
+                </h2>
+                <p className="mt-5 max-w-md text-sm leading-relaxed text-charcoal-light">
+                  Whether you are a prime contractor looking for a specialist subcontractor, a procurement team
+                  evaluating suppliers, or an organisation exploring a strategic partnership — we would like to hear
+                  from you.
+                </p>
+              </Reveal>
 
               <div className="mt-10 space-y-6">
                 {[
@@ -161,28 +188,35 @@ export function PartnersPage() {
                   },
                   {
                     title: 'For strategic partners',
-                    body: 'We are open to partnerships that extend our reach or complement our capabilities — in Rwanda and the wider region.',
+                    body: 'We welcome partnership enquiries that complement our capabilities in Rwanda; regional opportunities are considered individually against scope and capacity.',
                   },
                 ].map((item) => (
-                  <div key={item.title} className="border-l-2 border-forest-600 pl-6">
-                    <h3 className="font-display text-lg font-semibold text-charcoal">{item.title}</h3>
-                    <p className="mt-2 text-base leading-relaxed text-muted text-pretty">{item.body}</p>
-                  </div>
+                  <Reveal key={item.title}>
+                    <div className="border-l border-forest-700/40 pl-5">
+                      <h3 className="font-display text-[15px] font-medium text-charcoal">{item.title}</h3>
+                      <p className="mt-2 text-[13px] leading-relaxed text-muted">{item.body}</p>
+                    </div>
+                  </Reveal>
                 ))}
               </div>
-            </Reveal>
+            </div>
 
-            <Reveal delay={1} className="lg:col-span-7">
-              <div className="bg-white p-8 shadow-[0_1px_0_rgba(37,43,41,0.06)] sm:p-10">
-                <h3 className="font-display text-xl font-semibold text-charcoal">Submit a partnership enquiry</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">
-                  Tell us about the project or tender and the role you need us to play.
-                </p>
-                <div className="mt-8">
-                  <EnquiryForm variant="partnership" />
+            <div className="lg:col-span-7">
+              <Reveal delay={1}>
+                <div className="bg-paper p-7 sm:p-10">
+                  <div className="flex items-center justify-between border-b border-charcoal/15 pb-4">
+                    <h3 className="font-display text-xl font-light text-charcoal">Submit a partnership enquiry</h3>
+                    <span className="text-[9px] uppercase tracking-[0.16em] text-muted">Step 01</span>
+                  </div>
+                  <p className="mt-4 text-[13px] leading-relaxed text-muted">
+                    Tell us about the project or tender and the role you need us to play.
+                  </p>
+                  <div className="mt-8">
+                    <EnquiryForm variant="partnership" />
+                  </div>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           </div>
         </div>
       </section>

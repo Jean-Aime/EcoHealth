@@ -44,6 +44,12 @@ const escapeHtml = (value: string) =>
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { 'Content-Type': 'application/json' } });
 
+/** Strips CR/LF so submitted values cannot inject extra mail headers. */
+const singleLine = (value: string, max = 160) =>
+  value.replace(/[\r\n\u0000]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, max);
+
+const MAX_BODY_BYTES = 16 * 1024;
+
 Deno.serve(async (request) => {
   if (request.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
 
@@ -52,9 +58,18 @@ Deno.serve(async (request) => {
     return json({ error: 'Unauthorised' }, 401);
   }
 
+  let raw: string;
+  try {
+    raw = await request.text();
+  } catch {
+    return json({ error: 'Unreadable body' }, 400);
+  }
+
+  if (raw.length > MAX_BODY_BYTES) return json({ error: 'Payload too large' }, 413);
+
   let payload: { record?: EnquiryRecord } & EnquiryRecord;
   try {
-    payload = await request.json();
+    payload = JSON.parse(raw);
   } catch {
     return json({ error: 'Invalid JSON body' }, 400);
   }
@@ -62,6 +77,10 @@ Deno.serve(async (request) => {
   const record = payload.record ?? payload;
   if (!record.email || !record.full_name || !record.description) {
     return json({ error: 'Not an enquiry record' }, 400);
+  }
+
+  if (String(record.email).length > 254 || String(record.description).length > 4000) {
+    return json({ error: 'Enquiry record exceeds permitted length' }, 413);
   }
 
   const apiKey = Deno.env.get('RESEND_API_KEY');
@@ -112,8 +131,11 @@ Deno.serve(async (request) => {
     body: JSON.stringify({
       from,
       to: recipients,
-      reply_to: record.email,
-      subject: `New enquiry: ${record.service_required ?? 'Website'} — ${record.full_name}`,
+      reply_to: singleLine(record.email, 254),
+      subject: `New enquiry: ${singleLine(record.service_required ?? 'Website', 120)} — ${singleLine(
+        record.full_name,
+        120,
+      )}`,
       html,
     }),
   });

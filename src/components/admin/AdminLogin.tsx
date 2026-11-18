@@ -45,6 +45,10 @@ export function AdminLogin({ onSignIn }: AdminLoginProps) {
             id="admin-email"
             type="email"
             autoComplete="username"
+            autoCapitalize="none"
+            spellCheck={false}
+            maxLength={254}
+            required
             className={fieldClass}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -58,6 +62,8 @@ export function AdminLogin({ onSignIn }: AdminLoginProps) {
             id="admin-password"
             type="password"
             autoComplete="current-password"
+            maxLength={200}
+            required
             className={fieldClass}
             value={password}
             onChange={(e) => setPassword(e.target.value)}

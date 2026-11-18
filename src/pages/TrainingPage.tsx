@@ -1,199 +1,215 @@
-import { useState } from 'react';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { useEffect, useMemo, useState } from 'react';
+import { ArrowRight, Search } from 'lucide-react';
 import { Link } from '@/lib/router';
 import { Reveal } from '@/components/Reveal';
-import { PageHero, ServiceCTA } from '@/components/PageHero';
+import { PageHero } from '@/components/PageHero';
+import { CTASection } from '@/components/CTASection';
 import { SEO } from '@/components/SEO';
-import { EnquiryForm } from '@/components/EnquiryForm';
-import { trainingCourses } from '@/data/content';
+import { ArtImage, SectionMarker } from '@/components/motion';
+import { fetchPublicTrainingCatalog, type TrainingCategory, type TrainingCourse } from '@/lib/training';
+import { formatDuration } from '@/lib/formatDuration';
 
-const heroImage =
-  'https://images.pexels.com/photos/4872019/pexels-photo-4872019.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const heroImage = 'https://images.pexels.com/photos/4872019/pexels-photo-4872019.jpeg?auto=compress&cs=tinysrgb&w=1800';
 
 export function TrainingPage() {
-  const categories = Array.from(new Set(trainingCourses.map((c) => c.category)));
-  const [selection, setSelection] = useState<{ course?: string; token: number }>({ token: 0 });
+  const [categories, setCategories] = useState<TrainingCategory[]>([]);
+  const [courses, setCourses] = useState<TrainingCourse[]>([]);
+  const [category, setCategory] = useState('all');
+  const [search, setSearch] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const selectCourse = (course: string) => {
-    setSelection((prev) => ({ course, token: prev.token + 1 }));
-    document.getElementById('training-enquiry')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  useEffect(() => {
+    let active = true;
+    fetchPublicTrainingCatalog().then((result) => {
+      if (!active) return;
+      setCategories(result.data.categories);
+      setCourses(result.data.courses);
+      setError(result.error);
+      setLoading(false);
+    });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const visibleCourses = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    return courses.filter((course) => {
+      const inCategory = category === 'all' || course.category_id === category;
+      const matches =
+        !query ||
+        [course.title, course.summary, course.description, course.target_audience, course.category?.name]
+          .filter(Boolean)
+          .some((value) => value?.toLowerCase().includes(query));
+      return inCategory && matches;
+    });
+  }, [category, courses, search]);
 
   return (
     <>
       <SEO
         title="Training & Capacity Building | EcoHealth & Transport Solutions Ltd"
-        description="Workplace safety, environmental, defensive driving, fatigue management, and risk assessment training tailored to the roles and risks your teams face."
+        description="Browse EcoHealth training course outlines, objectives, delivery formats and available sessions, or request corporate training."
         path="/training"
       />
+
       <PageHero
-        eyebrow="Training & Capacity Building"
-        title="Building real capability in your workforce."
-        subtitle="Structured training that builds practical safety, environmental, and operational capability — tailored to the roles and risks your teams actually face."
+        eyebrow="Training & capacity building"
+        title="Training shaped around the work people do."
+        titleLines={['Training shaped', 'around the work', 'people do.']}
+        subtitle="Explore courses and upcoming sessions published by EcoHealth. Course details, availability and any applicable credentials are confirmed before registration."
         image={heroImage}
-        imageAlt="A group of professionals engaged in a business meeting with a presentation in a modern office"
+        imageAlt="Professionals taking part in a training session"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Training' }]}
+        index="03"
+        meta={['Course outlines', 'Upcoming sessions', 'Individual & corporate enquiries']}
       />
 
-      {/* Course catalogue */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            {/* Sticky sidebar */}
-            <div className="lg:col-span-3">
+      <section className="bg-ivory py-16 lg:py-24">
+        <div className="shell">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
               <Reveal>
-                <div className="lg:sticky lg:top-28">
-                  <p className="eyebrow">Course categories</p>
-                  <nav className="mt-6 space-y-2">
-                    {categories.map((cat) => (
-                      <a
-                        key={cat}
-                        href={`#cat-${cat.toLowerCase().replace(/\s+/g, '-')}`}
-                        onClick={(e) => {
-                          e.preventDefault();
-                          document
-                            .getElementById(`cat-${cat.toLowerCase().replace(/\s+/g, '-')}`)
-                            ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                        }}
-                        className="block border-l-2 border-charcoal/10 py-2 pl-4 text-sm text-charcoal-light transition-colors hover:border-forest-600 hover:text-forest-700"
-                      >
-                        {cat}
-                      </a>
-                    ))}
-                  </nav>
-                  <div className="mt-10 border-t border-charcoal/10 pt-8">
-                    <p className="text-sm leading-relaxed text-muted">
-                      Course durations, pricing, and accreditation details are confirmed on enquiry, based on your team's needs.
-                    </p>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-
-            {/* Courses */}
-            <div className="lg:col-span-9">
-              {categories.map((category) => {
-                const courses = trainingCourses.filter((c) => c.category === category);
-                return (
-                  <div
-                    key={category}
-                    id={`cat-${category.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="mb-16 scroll-mt-28"
-                  >
-                    <Reveal>
-                      <div className="flex items-center gap-4">
-                        <h2 className="font-display text-2xl font-semibold text-charcoal">
-                          {category}
-                        </h2>
-                        <span className="h-px flex-1 bg-charcoal/10" />
-                        <span className="text-xs uppercase tracking-widest text-muted">
-                          {courses.length} course{courses.length > 1 ? 's' : ''}
-                        </span>
-                      </div>
-                    </Reveal>
-
-                    <div className="mt-8 border-t border-charcoal/10">
-                      {courses.map((course, i) => (
-                        <Reveal key={course.slug} delay={((i % 2) + 1) as 1 | 2}>
-                          <div className="group grid gap-4 border-b border-charcoal/10 py-8 transition-colors hover:bg-sage-light/40 sm:grid-cols-12 sm:gap-6">
-                            <div className="sm:col-span-1">
-                              <span className="font-display text-sm font-bold text-forest-600">
-                                {String(i + 1).padStart(2, '0')}
-                              </span>
-                            </div>
-                            <div className="sm:col-span-7">
-                              <h3 className="font-display text-lg font-semibold text-charcoal">
-                                {course.title}
-                              </h3>
-                              <p className="mt-2 text-sm leading-relaxed text-muted text-pretty">
-                                {course.description}
-                              </p>
-                            </div>
-                            <div className="flex items-center sm:col-span-4 sm:justify-end">
-                              <button
-                                type="button"
-                                onClick={() => selectCourse(course.title)}
-                                className="group/link inline-flex items-center gap-2 text-left text-xs font-medium uppercase tracking-wider text-forest-700"
-                              >
-                                <span className="link-underline">Enquire about this course</span>
-                                <ArrowUpRight className="h-3.5 w-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-                              </button>
-                            </div>
-                          </div>
-                        </Reveal>
-                      ))}
-                    </div>
-                  </div>
-                );
-              })}
-
-              {/* Training enquiry CTA */}
-              <Reveal>
-                <div className="mt-8 bg-forest-800 p-10 text-ivory">
-                  <h3 className="font-display text-2xl font-semibold text-white">
-                    Need a training programme scoped to your project?
-                  </h3>
-                  <p className="mt-4 text-base leading-relaxed text-ivory/65 text-pretty">
-                    Tell us about your team, the risks they face, and the outcomes you need. We will design a programme that fits — and provide clear details on duration, content, and delivery.
-                  </p>
-                  <div className="mt-8">
-                    <button
-                      type="button"
-                      onClick={() => selectCourse('Custom programme')}
-                      className="group inline-flex items-center gap-2 bg-white px-7 py-3.5 text-sm font-medium uppercase tracking-wider text-forest-800 transition-all duration-500 ease-elegant hover:gap-3"
-                    >
-                      Submit a Training Enquiry
-                      <ArrowRight className="h-4 w-4" />
-                    </button>
-                  </div>
-                </div>
-              </Reveal>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Training enquiry */}
-      <section id="training-enquiry" className="bg-sage-light scroll-mt-24">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-4">
-              <p className="eyebrow">Training enquiry</p>
-              <h2 className="mt-5 font-display text-display-md text-charcoal text-balance">
-                Request a programme for your team.
-              </h2>
-              <p className="mt-6 text-base leading-relaxed text-muted text-pretty">
-                Tell us about the team, the risks they face, and the outcomes you need. We will respond with a
-                programme outline, delivery approach, and the practical details needed to proceed.
-              </p>
-              <p className="mt-6 text-sm leading-relaxed text-muted">
-                Durations, pricing, and accreditation are confirmed per programme — we do not publish figures that
-                have not been approved.
-              </p>
-              <div className="mt-8 border-t border-charcoal/10 pt-6">
-                <p className="text-sm text-muted">
-                  Prefer a general enquiry?{' '}
-                  <Link to="/contact" className="text-forest-700 link-underline">
-                    Use the main enquiry form
-                  </Link>
-                  .
+                <SectionMarker index="01" label="Training catalogue" />
+                <h2 className="mt-6 max-w-sm font-display text-display-md text-charcoal">
+                  Find the right course and session.
+                </h2>
+                <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
+                  Only courses and dates explicitly published by EcoHealth appear here. For a tailored team programme,
+                  send a corporate training request.
                 </p>
-              </div>
-            </Reveal>
+                <Link to="/training/corporate" className="btn-primary mt-8">
+                  Request corporate training
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/learner" className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-forest-700 link-underline">
+                  Open learner portal
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link to="/certificates/verify" className="mt-3 inline-flex items-center gap-2 text-sm font-medium text-forest-700 link-underline">
+                  Verify a certificate
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </Reveal>
 
-            <Reveal delay={1} className="lg:col-span-8">
-              <div className="bg-white p-8 shadow-[0_1px_0_rgba(37,43,41,0.06)] sm:p-10">
-                <EnquiryForm key={selection.token} variant="training" initialService={selection.course} />
-              </div>
-            </Reveal>
+              <Reveal delay={1}>
+                <div className="mt-10">
+                  <ArtImage
+                    src="https://images.pexels.com/photos/8761547/pexels-photo-8761547.jpeg?auto=compress&cs=tinysrgb&w=1400"
+                    alt="Professionals attending a facilitated training session"
+                    sizes="(min-width: 1024px) 32vw, 100vw"
+                    width={1000}
+                    height={1200}
+                    className="aspect-[4/5]"
+                  />
+                </div>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-8">
+              {(loading || courses.length > 0) && (
+                <div className="grid gap-4 border-b border-charcoal/15 pb-6 sm:grid-cols-2">
+                  <label className="relative block">
+                    <span className="sr-only">Search courses</span>
+                    <Search className="pointer-events-none absolute left-0 top-1/2 h-4 w-4 -translate-y-1/2 text-muted" />
+                    <input
+                      type="search"
+                      value={search}
+                      onChange={(event) => setSearch(event.target.value)}
+                      placeholder="Search courses"
+                      className="w-full border-0 border-b border-charcoal/25 bg-transparent py-3 pl-7 text-sm text-charcoal placeholder:text-muted focus:border-forest-700 focus:outline-none"
+                    />
+                  </label>
+                  <label>
+                    <span className="sr-only">Filter by category</span>
+                    <select
+                      value={category}
+                      onChange={(event) => setCategory(event.target.value)}
+                      className="w-full border-0 border-b border-charcoal/25 bg-transparent py-3 text-sm text-charcoal focus:border-forest-700 focus:outline-none"
+                    >
+                      <option value="all">All categories</option>
+                      {categories.map((entry) => (
+                        <option key={entry.id} value={entry.id}>
+                          {entry.name}
+                        </option>
+                      ))}
+                    </select>
+                  </label>
+                </div>
+              )}
+
+              {error && (
+                <p role="alert" className="mt-8 border border-red-700/25 bg-red-50 p-5 text-sm text-red-800">
+                  {error}
+                </p>
+              )}
+              {loading ? (
+                <p role="status" className="mt-8 text-sm text-muted">Loading the course catalogue…</p>
+              ) : visibleCourses.length === 0 ? (
+                <div className="mt-8 border border-dashed border-charcoal/20 p-8 sm:p-10">
+                  <p className="font-display text-xl font-light text-charcoal">
+                    {courses.length === 0 ? 'No courses are published yet.' : 'No courses match your search.'}
+                  </p>
+                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted">
+                    {courses.length === 0
+                      ? 'Courses created and published by the EcoHealth training team will appear here. Select a course to review its objectives, audience, prerequisites, duration, delivery and available sessions.'
+                      : 'Try a different search term or category, or ask about a tailored programme.'}
+                  </p>
+                  <Link to="/training/corporate" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-forest-700 link-underline">
+                    Request corporate training
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              ) : (
+                <div className="mt-2 border-t border-charcoal/15">
+                  {visibleCourses.map((course, index) => (
+                    <Reveal key={course.id} delay={((index % 3) + 1) as 1 | 2 | 3}>
+                      <article className="grid gap-4 border-b border-charcoal/15 py-7 sm:grid-cols-12 sm:gap-6">
+                        <div className="sm:col-span-1">
+                          <span className="font-serif text-2xl italic text-forest-700/40">
+                            {String(index + 1).padStart(2, '0')}
+                          </span>
+                        </div>
+                        <div className="sm:col-span-8">
+                          <p className="text-[9px] font-semibold uppercase tracking-[0.16em] text-forest-700">
+                            {course.category?.name ?? 'Training'}
+                          </p>
+                          <h3 className="mt-2 font-display text-xl font-medium text-charcoal">{course.title}</h3>
+                          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{course.summary}</p>
+                          <p className="mt-4 text-[10px] font-semibold uppercase tracking-[0.13em] text-charcoal-light">
+                            {formatDuration(course.duration_minutes)} · {course.delivery_formats.join(' · ')}
+                          </p>
+                        </div>
+                        <div className="sm:col-span-3 sm:flex sm:justify-end">
+                          <Link
+                            to={`/training/${course.slug}`}
+                            className="inline-flex items-center gap-2 self-start text-[10px] font-semibold uppercase tracking-[0.14em] text-forest-700"
+                          >
+                            Course details
+                            <ArrowRight className="h-4 w-4" />
+                          </Link>
+                        </div>
+                      </article>
+                    </Reveal>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>
 
-      <ServiceCTA
-        title="Ready to build capability in your team?"
-        body="Send us your training requirements and we will discuss a programme that fits your operational context."
-        ctaTo="/contact?enquiry=training"
+      <CTASection
+        eyebrow="Corporate training"
+        headline="Need a course scoped to your workplace?"
+        headlineLines={['Need a course scoped', 'to your workplace?']}
+        body="Tell us about your organisation, the participants and the outcomes you need. The training team will review your request and follow up."
+        ctaLabel="Request corporate training"
+        ctaTo="/training/corporate"
+        variant="forest"
+        secondaryTo="/contact?enquiry=training"
+        secondaryLabel="Contact the training team"
       />
     </>
   );

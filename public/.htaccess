@@ -27,10 +27,35 @@
 </IfModule>
 
 <IfModule mod_headers.c>
+  # ── Security headers ───────────────────────────────────────────────────────
+  # Content sources are limited to this site, Google Fonts, the photography CDN,
+  # Supabase (enquiries, CMS, auth) and the optional analytics providers.
+  Header always set Content-Security-Policy "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; form-action 'self'; script-src 'self' https://www.googletagmanager.com https://plausible.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://images.pexels.com https://*.supabase.co https://www.google-analytics.com https://www.googletagmanager.com; connect-src 'self' https://*.supabase.co wss://*.supabase.co https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://plausible.io; manifest-src 'self'; media-src 'self'; worker-src 'self'"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Resource-Policy "same-site"
+
+  # HSTS only when the request actually arrived over HTTPS, so local HTTP
+  # development is never pinned to HTTPS.
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains" env=HTTPS
+
+  # ── Caching ────────────────────────────────────────────────────────────────
   <FilesMatch "\.(css|js)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
   <FilesMatch "index\.html$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
+  <FilesMatch "\.(png|jpe?g|svg|webp|avif)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
 </IfModule>
+
+# Do not serve environment files or version-control metadata even if a host
+# misconfigures the document root.
+<FilesMatch "^\.env|^\.git">
+  Require all denied
+</FilesMatch>

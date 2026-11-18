@@ -1,13 +1,17 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { ArrowRight, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { Link } from '@/lib/router';
 import { supabase } from '@/lib/supabase';
 import {
   emptyEnquiry,
+  ENQUIRY_LIMITS,
+  normaliseBlock,
+  normaliseLine,
   validateEnquiry,
   type EnquiryErrors,
   type EnquiryValues,
 } from '@/lib/enquiryValidation';
-import { services, trainingCourses } from '@/data/content';
+import { services } from '@/data/content';
 
 export type EnquiryVariant = 'quote' | 'training' | 'partnership';
 
@@ -54,7 +58,7 @@ const VARIANTS: Record<EnquiryVariant, VariantConfig> = {
     successTitle: 'Thank you. Your training enquiry has been received.',
     successBody:
       'We will review your team, the risks involved, and your objectives, then come back with a programme outline and the details needed to proceed.',
-    options: [...trainingCourses.map((course) => course.title), 'Custom programme'],
+    options: ['Custom programme', 'Corporate training enquiry'],
   },
   partnership: {
     enquiryType: 'partnership',
@@ -118,6 +122,9 @@ export function EnquiryForm({
   const [errors, setErrors] = useState<EnquiryErrors>({});
   const [state, setState] = useState<SubmitState>('idle');
   const [honeypot, setHoneypot] = useState('');
+  const [errorMessage, setErrorMessage] = useState(
+    'Your enquiry could not be sent. Please check your connection and try again. If the problem continues, the enquiry service is not yet connected for this website.',
+  );
 
   useEffect(() => {
     if (!initialService) return;
@@ -142,8 +149,20 @@ export function EnquiryForm({
     const found = validateEnquiry(values);
     setErrors(found);
     if (Object.keys(found).length > 0) {
-      const firstInvalid = event.currentTarget.querySelector<HTMLElement>('[aria-invalid="true"]');
-      firstInvalid?.focus();
+      // aria-invalid is only applied after the next render, so locate the first
+      // invalid field by its stable id instead of querying the old DOM.
+      const fieldOrder = [
+        'fullName',
+        'organisation',
+        'email',
+        'telephone',
+        'serviceRequired',
+        'projectLocation',
+        'description',
+        'consent',
+      ] as const;
+      const firstInvalidKey = fieldOrder.find((key) => found[key]);
+      if (firstInvalidKey) document.getElementById(firstInvalidKey)?.focus();
       return;
     }
 
@@ -154,19 +173,24 @@ export function EnquiryForm({
 
     setState('submitting');
     const { error } = await supabase.from('enquiries').insert({
-      full_name: values.fullName.trim(),
-      organisation: values.organisation.trim() || null,
-      email: values.email.trim(),
-      telephone: values.telephone.trim() || null,
-      service_required: values.serviceRequired,
-      project_location: values.projectLocation.trim() || null,
-      description: values.description.trim(),
+      full_name: normaliseLine(values.fullName),
+      organisation: normaliseLine(values.organisation) || null,
+      email: values.email.trim().toLowerCase(),
+      telephone: normaliseLine(values.telephone) || null,
+      service_required: normaliseLine(values.serviceRequired),
+      project_location: normaliseLine(values.projectLocation) || null,
+      description: normaliseBlock(values.description),
       preferred_contact: values.preferredContact,
       enquiry_type: config.enquiryType,
       consent: values.consent,
     });
 
     if (error) {
+      setErrorMessage(
+        error.code === 'P0001' || /too many|rate/i.test(error.message)
+          ? 'Too many enquiries have been submitted from this email address. Please wait a few minutes and try again.'
+          : 'Your enquiry could not be sent. Please check your connection and try again. If the problem continues, the enquiry service is not yet connected for this website.',
+      );
       setState('error');
       return;
     }
@@ -208,6 +232,7 @@ export function EnquiryForm({
             name="fullName"
             autoComplete="name"
             required
+            maxLength={ENQUIRY_LIMITS.fullName}
             className={fieldClass}
             value={values.fullName}
             onChange={(e) => update('fullName', e.target.value)}
@@ -220,6 +245,7 @@ export function EnquiryForm({
             id="organisation"
             name="organisation"
             autoComplete="organization"
+            maxLength={ENQUIRY_LIMITS.organisation}
             className={fieldClass}
             value={values.organisation}
             onChange={(e) => update('organisation', e.target.value)}
@@ -230,7 +256,9 @@ export function EnquiryForm({
             id="email"
             name="email"
             type="email"
+            inputMode="email"
             autoComplete="email"
+            maxLength={ENQUIRY_LIMITS.email}
             required
             className={fieldClass}
             value={values.email}
@@ -244,7 +272,9 @@ export function EnquiryForm({
             id="telephone"
             name="telephone"
             type="tel"
+            inputMode="tel"
             autoComplete="tel"
+            maxLength={ENQUIRY_LIMITS.telephone}
             className={fieldClass}
             value={values.telephone}
             onChange={(e) => update('telephone', e.target.value)}
@@ -280,6 +310,7 @@ export function EnquiryForm({
           <input
             id="projectLocation"
             name="projectLocation"
+            maxLength={ENQUIRY_LIMITS.projectLocation}
             className={fieldClass}
             placeholder="e.g. Kigali, Northern Province"
             value={values.projectLocation}
@@ -297,6 +328,7 @@ export function EnquiryForm({
             name="description"
             rows={5}
             required
+            maxLength={ENQUIRY_LIMITS.description}
             placeholder={config.descriptionPlaceholder}
             className={`${fieldClass} resize-y`}
             value={values.description}
@@ -344,6 +376,7 @@ export function EnquiryForm({
       <div>
         <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-charcoal-light">
           <input
+            id="consent"
             type="checkbox"
             name="consent"
             checked={values.consent}
@@ -353,8 +386,12 @@ export function EnquiryForm({
             className="mt-1 h-4 w-4 flex-shrink-0 accent-forest-600"
           />
           <span>
-            I agree that EcoHealth & Transport Solutions Ltd may contact me about this enquiry and will process my details
-            as described in the Privacy Policy. *
+            I agree that EcoHealth &amp; Transport Solutions Ltd may contact me about this enquiry and will process my
+            details as described in the{' '}
+            <Link to="/privacy" className="text-forest-700 link-underline">
+              Privacy Policy
+            </Link>
+            . *
           </span>
         </label>
         {errors.consent && (
@@ -367,10 +404,7 @@ export function EnquiryForm({
       {state === 'error' && (
         <div role="alert" className="flex items-start gap-3 border border-red-700/30 bg-red-50 p-5 text-sm text-red-800">
           <AlertCircle className="mt-0.5 h-5 w-5 flex-shrink-0" />
-          <p>
-            Your enquiry could not be sent. Please check your connection and try again. If the problem continues, the
-            enquiry service is not yet connected for this website.
-          </p>
+          <p>{errorMessage}</p>
         </div>
       )}
 

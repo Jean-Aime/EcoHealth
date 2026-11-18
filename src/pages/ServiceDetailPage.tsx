@@ -1,26 +1,29 @@
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from '@/lib/router';
 import { Reveal } from '@/components/Reveal';
 import { PageHero, ServiceCTA } from '@/components/PageHero';
 import { SEO } from '@/components/SEO';
 import { services, servicePaths, type Service } from '@/data/content';
 import { breadcrumbJsonLd, serviceJsonLd } from '@/lib/site';
+import { ArtImage, ArrowLink, SectionMarker } from '@/components/motion';
 
 export function ServiceDetailPage({ slug }: { slug: string }) {
-  const service = services.find((s) => s.slug === slug);
+  const service = services.find((entry) => entry.slug === slug);
 
   if (!service) {
-  return (
+    return (
       <>
-        <SEO title="Service Not Found | EcoHealth" description="The requested service could not be found." path="/services" />
-        <section className="flex min-h-screen items-center justify-center bg-ivory px-6">
-          <div className="text-center">
-            <p className="eyebrow">404</p>
-            <h1 className="mt-4 font-display text-display-md text-charcoal">Service not found</h1>
-            <p className="mt-4 text-muted">The service you are looking for does not exist.</p>
-            <Link to="/services" className="btn-primary mt-8">
+        <SEO title="Service Not Found | EcoHealth" description="The requested service could not be found." path="/services" noIndex />
+        <section className="relative flex min-h-[80svh] items-end overflow-hidden bg-forest-950 pb-16 pt-32 text-ivory">
+          <div className="shell relative z-10">
+            <p className="font-display text-[9rem] font-light leading-none text-white/10 sm:text-[14rem]">404</p>
+            <h1 className="mt-4 font-display text-display-lg text-ivory">This service could not be found.</h1>
+            <p className="mt-4 max-w-md text-base text-ivory/60">
+              The service you are looking for does not exist. Explore our six consultancy disciplines instead.
+            </p>
+            <Link to="/services" className="btn-solid-light mt-8">
+              All services
               <ArrowRight className="h-4 w-4" />
-              All Services
             </Link>
           </div>
         </section>
@@ -29,7 +32,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
   }
 
   const relatedServices = service.related
-    .map((r) => services.find((s) => s.slug === r))
+    .map((related) => services.find((entry) => entry.slug === related))
     .filter(Boolean) as Service[];
 
   return (
@@ -60,47 +63,68 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
           { label: 'Services', path: '/services' },
           { label: service.shortTitle },
         ]}
+        index={service.index}
+        meta={['Rwanda', 'Project-based', 'Documented delivery']}
       />
 
-      {/* Introduction */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
+      {/* Overview — editorial statement with a service dossier */}
+      <section className="bg-ivory py-20 lg:py-28">
+        <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-4">
-              <p className="eyebrow">Overview</p>
-            </Reveal>
             <div className="lg:col-span-8">
-              <Reveal delay={1}>
-                <p className="font-display text-2xl font-medium leading-snug text-charcoal text-balance lg:text-3xl">
+              <Reveal>
+                <SectionMarker index="01" label="Overview" />
+                <p className="mt-8 max-w-3xl font-display text-2xl font-light leading-[1.35] text-charcoal sm:text-3xl lg:text-[2.35rem]">
                   {service.intro}
                 </p>
+              </Reveal>
+            </div>
+
+            <div className="lg:col-span-4">
+              <Reveal delay={1}>
+                <dl className="border-t border-charcoal/15">
+                  {[
+                    ['Service', service.shortTitle],
+                    ['Index', service.index],
+                    ['Coverage', 'Rwanda; regional work subject to scope and capacity'],
+                    ['Format', 'Advisory, field support, documented reporting'],
+                  ].map(([label, value]) => (
+                    <div key={label} className="border-b border-charcoal/15 py-4">
+                      <dt className="text-[9.5px] font-semibold uppercase tracking-[0.18em] text-muted">{label}</dt>
+                      <dd className="mt-1.5 text-[13.5px] leading-relaxed text-charcoal-light">{value}</dd>
+                    </div>
+                  ))}
+                </dl>
               </Reveal>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Problems addressed */}
-      <section className="bg-sage-light">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-4">
-              <p className="eyebrow">The challenge</p>
-              <h2 className="mt-5 font-display text-display-sm text-charcoal text-balance">
-                Problems we help you address.
-              </h2>
-            </Reveal>
+      {/* The challenge */}
+      <section className="bg-sage-light py-20 lg:py-28">
+        <div className="shell">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <Reveal>
+                <div className="lg:sticky lg:top-28">
+                  <SectionMarker index="02" label="The challenge" />
+                  <h2 className="mt-6 max-w-xs font-display text-display-md text-charcoal">
+                    Problems we help you address.
+                  </h2>
+                </div>
+              </Reveal>
+            </div>
+
             <div className="lg:col-span-8">
-              <div className="border-t border-charcoal/10">
-                {service.problems.map((problem, i) => (
-                  <Reveal key={i} delay={((i % 3) + 1) as 1 | 2 | 3}>
-                    <div className="flex items-start gap-5 border-b border-charcoal/10 py-6">
-                      <span className="mt-1 font-display text-sm font-bold text-forest-600">
-                        {String(i + 1).padStart(2, '0')}
+              <div className="grid gap-x-10 border-t border-charcoal/15 sm:grid-cols-2">
+                {service.problems.map((problem, index) => (
+                  <Reveal key={problem} delay={((index % 2) + 1) as 1 | 2}>
+                    <div className="flex gap-5 border-b border-charcoal/15 py-7">
+                      <span className="font-serif text-3xl italic leading-none text-forest-700/30">
+                        {String(index + 1).padStart(2, '0')}
                       </span>
-                      <p className="text-lg leading-relaxed text-charcoal-light text-pretty">
-                        {problem}
-                      </p>
+                      <p className="text-[14.5px] leading-relaxed text-charcoal-light">{problem}</p>
                     </div>
                   </Reveal>
                 ))}
@@ -110,95 +134,118 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* Offerings */}
-      <section className="bg-ivory">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
-          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-            <Reveal className="lg:col-span-4">
-              <p className="eyebrow">What we deliver</p>
-              <h2 className="mt-5 font-display text-display-sm text-charcoal text-balance">
-                Service offerings.
-              </h2>
-            </Reveal>
+      {/* Offerings — dark ledger */}
+      <section className="grain-overlay relative overflow-hidden bg-forest-950 py-20 text-ivory lg:py-28">
+        <div className="shell relative z-10">
+          <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-4">
+              <Reveal>
+                <SectionMarker index="03" label="What we deliver" tone="light" />
+                <h2 className="mt-6 max-w-xs font-display text-display-md text-ivory">Service offerings.</h2>
+                <p className="mt-5 max-w-xs text-sm leading-relaxed text-ivory/55">
+                  Delivered as a focused advisory engagement, embedded project support, or a structured programme.
+                </p>
+              </Reveal>
+            </div>
+
             <div className="lg:col-span-8">
-              <Reveal delay={1}>
-                <div className="grid gap-px bg-charcoal/10 sm:grid-cols-2">
-                  {service.offerings.map((offering) => (
-                    <div key={offering} className="flex items-start gap-4 bg-ivory p-7">
-                      <Check className="mt-0.5 h-5 w-5 flex-shrink-0 text-forest-600" />
-                      <p className="text-base leading-relaxed text-charcoal-light text-pretty">
+              <ul className="border-t border-white/15">
+                {service.offerings.map((offering, index) => (
+                  <Reveal key={offering} delay={((index % 3) + 1) as 1 | 2 | 3}>
+                    <li className="group flex items-baseline gap-5 border-b border-white/15 py-5 transition-colors duration-500 hover:bg-white/[0.03]">
+                      <span className="text-[9.5px] font-semibold tabular-nums tracking-[0.16em] text-ivory/30">
+                        {String(index + 1).padStart(2, '0')}
+                      </span>
+                      <span className="text-[15px] leading-relaxed text-ivory/75 transition-colors group-hover:text-ivory">
                         {offering}
-                      </p>
-                    </div>
-                  ))}
+                      </span>
+                      <ArrowRight className="ml-auto h-4 w-4 shrink-0 text-ivory/20 transition-all duration-500 group-hover:translate-x-1 group-hover:text-ivory/60" />
+                    </li>
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Benefits & deliverables */}
+      <section className="bg-ivory py-20 lg:py-28">
+        <div className="shell">
+          <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
+            <div className="lg:col-span-6">
+              <Reveal>
+                <SectionMarker index="04" label="Benefits" />
+                <h2 className="mt-6 max-w-md font-display text-display-sm text-charcoal">
+                  What this means for your operation.
+                </h2>
+              </Reveal>
+              <ul className="mt-8 border-t border-charcoal/15">
+                {service.benefits.map((benefit, index) => (
+                  <Reveal key={benefit} delay={((index % 3) + 1) as 1 | 2 | 3}>
+                    <li className="flex items-start gap-4 border-b border-charcoal/15 py-4">
+                      <span className="mt-2 h-px w-5 shrink-0 bg-forest-600" aria-hidden="true" />
+                      <p className="text-[14.5px] leading-relaxed text-charcoal-light">{benefit}</p>
+                    </li>
+                  </Reveal>
+                ))}
+              </ul>
+            </div>
+
+            <div className="lg:col-span-5 lg:col-start-8">
+              <Reveal delay={1}>
+                <div className="border border-charcoal/20 bg-paper p-8">
+                  <p className="text-[9.5px] font-semibold uppercase tracking-[0.2em] text-muted">Deliverables</p>
+                  <h2 className="mt-3 font-display text-xl font-light text-charcoal">What you receive.</h2>
+                  <ul className="mt-6 space-y-4">
+                    {service.deliverables.map((deliverable) => (
+                      <li key={deliverable} className="flex items-start gap-3 text-[13.5px] leading-relaxed text-charcoal-light">
+                        <span className="mt-[0.55rem] h-1 w-1 shrink-0 bg-forest-600" aria-hidden="true" />
+                        {deliverable}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
+                <p className="mt-5 text-[11px] leading-relaxed text-muted">
+                  Deliverables are tailored to each engagement. Outcomes depend on project scope and context — we do not
+                  offer unsupported guarantees.
+                </p>
               </Reveal>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits & Deliverables — split */}
-      <section className="bg-sage-light">
-        <div className="mx-auto max-w-8xl px-6 py-24 lg:px-10 lg:py-32">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <Reveal>
-              <p className="eyebrow">Benefits</p>
-              <h2 className="mt-5 font-display text-display-sm text-charcoal text-balance">
-                What this means for your operation.
-              </h2>
-              <ul className="mt-8 space-y-4">
-                {service.benefits.map((benefit) => (
-                  <li key={benefit} className="flex items-start gap-4 border-l-2 border-forest-600 pl-5">
-                    <p className="text-base leading-relaxed text-charcoal-light text-pretty">{benefit}</p>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-            <Reveal delay={1}>
-              <p className="eyebrow">Deliverables</p>
-              <h2 className="mt-5 font-display text-display-sm text-charcoal text-balance">
-                What you receive.
-              </h2>
-              <ul className="mt-8 space-y-4">
-                {service.deliverables.map((deliverable) => (
-                  <li key={deliverable} className="flex items-start gap-4 border-l-2 border-charcoal/20 pl-5">
-                    <p className="text-base leading-relaxed text-charcoal-light text-pretty">{deliverable}</p>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-          </div>
-          <p className="mt-10 text-xs italic text-muted">
-            Deliverables are tailored to each engagement. Outcomes depend on project scope and context — we do not offer unsupported guarantees.
-          </p>
-        </div>
-      </section>
-
       {/* Related services */}
-      <section className="bg-ivory border-t border-charcoal/10">
-        <div className="mx-auto max-w-8xl px-6 py-20 lg:px-10 lg:py-24">
-          <p className="eyebrow">Related services</p>
-          <div className="mt-8 grid gap-px bg-charcoal/10 sm:grid-cols-3">
-            {relatedServices.map((rel, i) => (
-              <Reveal key={rel.slug} delay={((i % 3) + 1) as 1 | 2 | 3} className="bg-ivory">
-                <Link
-                  to={servicePaths[rel.slug]}
-                  className="group flex h-full flex-col p-7"
-                >
-                  <span className="font-display text-sm font-bold text-forest-600">
-                    {rel.index}
-                  </span>
-                  <h3 className="mt-3 font-display text-lg font-semibold text-charcoal">
-                    {rel.shortTitle}
-                  </h3>
-                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted text-pretty">
-                    {rel.summary}
-                  </p>
-                  <span className="mt-4 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-forest-700">
-                    <span className="link-underline">View service</span>
-                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                  </span>
+      <section className="border-t border-charcoal/10 bg-paper py-16 lg:py-20">
+        <div className="shell">
+          <div className="flex items-end justify-between gap-6">
+            <Reveal>
+              <SectionMarker index="05" label="Related services" />
+            </Reveal>
+            <ArrowLink to="/services">All six disciplines</ArrowLink>
+          </div>
+
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            {relatedServices.map((related) => (
+              <Reveal key={related.slug}>
+                <Link to={servicePaths[related.slug]} className="group block">
+                  <div className="relative">
+                    <ArtImage
+                      src={related.image}
+                      alt={related.imageAlt}
+                      sizes="(min-width: 640px) 30vw, 100vw"
+                      width={900}
+                      height={675}
+                      className="aspect-[4/3]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-forest-950/85 via-forest-950/10 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 p-5">
+                      <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-ivory/60">{related.index}</p>
+                      <h3 className="mt-1.5 font-display text-lg font-light text-ivory">{related.shortTitle}</h3>
+                    </div>
+                  </div>
+                  <p className="mt-3 text-[12.5px] leading-relaxed text-muted">{related.summary}</p>
                 </Link>
               </Reveal>
             ))}

@@ -69,9 +69,23 @@ interface LinkProps {
   className?: string;
   onClick?: () => void;
   title?: string;
+  onMouseEnter?: () => void;
+  onFocus?: () => void;
+  'aria-current'?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true' | 'false';
+  'aria-label'?: string;
 }
 
-export function Link({ to, children, className, onClick, title }: LinkProps) {
+export function Link({
+  to,
+  children,
+  className,
+  onClick,
+  title,
+  onMouseEnter,
+  onFocus,
+  'aria-current': ariaCurrent,
+  'aria-label': ariaLabel,
+}: LinkProps) {
   const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (event.defaultPrevented) return;
     if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
@@ -83,7 +97,16 @@ export function Link({ to, children, className, onClick, title }: LinkProps) {
   };
 
   return (
-    <a href={to} className={className} onClick={handleClick} title={title}>
+    <a
+      href={to}
+      className={className}
+      onClick={handleClick}
+      title={title}
+      onMouseEnter={onMouseEnter}
+      onFocus={onFocus}
+      aria-current={ariaCurrent}
+      aria-label={ariaLabel}
+    >
       {children}
     </a>
   );

@@ -20,4 +20,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment and credentials — keep the template, never the real values.
 .env
+.env.*
+!.env.example
+.dev.vars
+/supabase/.temp/
+*.pem

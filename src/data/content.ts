@@ -15,7 +15,7 @@ export const company = {
     headline: 'Where operational safety meets environmental responsibility.',
     body: [
       'EcoHealth & Transport Solutions Ltd supports organisations in strengthening workplace safety, managing environmental responsibilities, and delivering field operations responsibly.',
-      'From EHS compliance and environmental management to workforce training and transport safety, we provide practical, risk-based solutions tailored to the realities of projects in Rwanda and the wider region.',
+      'From EHS compliance and environmental management to workforce training and transport safety, we provide practical, risk-based solutions for projects in Rwanda. Regional engagements are considered individually, subject to scope and capacity.',
     ],
   },
   whyEcoHealth: [
@@ -109,7 +109,7 @@ export const services: Service[] = [
       'Pressure from clients and regulators to demonstrate sustainability',
     ],
     offerings: [
-      'Environmental impact assessments and screening',
+      'Environmental impact screening and coordination with authorised specialists for formal assessments or approvals',
       'Environmental management plans for projects and sites',
       'Environmental monitoring and compliance reporting',
       'Waste and pollution control guidance',
@@ -165,9 +165,9 @@ export const services: Service[] = [
     ],
     deliverables: [
       'Tailored training programmes scoped to your teams',
-      'Training delivery by qualified facilitators',
-      'Attendance and completion records',
-      'Post-training improvement recommendations',
+      'Facilitator competence and delivery arrangements agreed for each programme',
+      'Attendance records where included in the agreed scope',
+      'Post-training improvement recommendations where agreed',
     ],
     related: ['ehs-consultancy', 'environmental-management', 'transport-fleet-safety'],
   },
@@ -181,7 +181,7 @@ export const services: Service[] = [
     image: 'https://images.pexels.com/photos/19728112/pexels-photo-19728112.jpeg?auto=compress&cs=tinysrgb&w=1400',
     imageAlt: 'Two workers repairing a cellular tower against a cloudy sky',
     intro:
-      'We provide technical field support for telecommunications and infrastructure projects, combining operational experience with disciplined safety supervision. Our teams help deliver and maintain network and field assets while keeping safety and quality central.',
+      'We scope telecommunications and infrastructure field support to the agreed work, confirmed competence and authorisations, available resources, and project agreements. Tower, antenna, radio, and equipment-change work is undertaken only where those requirements are met.',
     problems: [
       'Field deployments needing trained, safety-aware technical teams',
       'Tower and site work with significant height and electrical risks',
@@ -189,12 +189,12 @@ export const services: Service[] = [
       'Limited local capacity for reliable technical field execution',
     ],
     offerings: [
-      'Field deployment and installation support',
+      'Field deployment and installation support within confirmed competence and project authorisations',
       'Site inspection and quality checks',
       'Technical supervision and coordination',
       'Safety supervision for tower and field work',
       'Field reporting and documentation',
-      'Maintenance and troubleshooting support',
+      'Drive-test, network-optimisation, maintenance, or troubleshooting support where resources and agreements are in place',
     ],
     benefits: [
       'Reliable, safety-conscious field execution',
@@ -220,7 +220,7 @@ export const services: Service[] = [
     image: 'https://images.pexels.com/photos/1606957/pexels-photo-1606957.jpeg?auto=compress&cs=tinysrgb&w=1400',
     imageAlt: 'A row of trucks and car transporters parked at sunset in an open parking lot',
     intro:
-      'We help organisations manage transport risk — from fleet safety policies to driver behaviour and journey planning. Our support is practical and field-oriented, addressing the realities of moving people, equipment, and materials in Rwanda and the region.',
+      'We help organisations manage transport risk — from fleet safety policies to driver behaviour and journey planning. Our support is practical and field-oriented, focused on operations in Rwanda; regional engagements are considered individually against scope and capacity.',
     problems: [
       'Transport-related incidents affecting people, assets, and schedules',
       'Inconsistent driver standards and journey management practices',
@@ -259,7 +259,7 @@ export const services: Service[] = [
     image: 'https://images.pexels.com/photos/36751332/pexels-photo-36751332.jpeg?auto=compress&cs=tinysrgb&w=1400',
     imageAlt: 'Workers sorting waste in a recycling facility, showcasing environmental sustainability efforts',
     intro:
-      'We support organisations in managing waste responsibly — including the growing challenge of electronic waste. Our focus is on practical segregation, handling, and disposal solutions that meet environmental obligations and reduce harm.',
+      'We support organisations in planning responsible waste management, including e-waste segregation and disposal coordination. Collection and recycling are arranged through authorised partners where required; formal approvals and regulated work remain with appropriately authorised specialists.',
     problems: [
       'Unclear responsibilities for waste handling and disposal',
       'Electronic waste accumulating without a safe disposal route',
@@ -268,7 +268,7 @@ export const services: Service[] = [
     ],
     offerings: [
       'Waste management planning and advisory',
-      'E-waste collection and responsible disposal support',
+      'E-waste collection and recycling coordination through authorised partners',
       'Waste segregation guidance for sites and facilities',
       'Compliance documentation for waste streams',
       'Environmental awareness training for waste handling',
@@ -290,31 +290,13 @@ export const services: Service[] = [
   },
 ];
 
-export interface TrainingCourse {
-  slug: string;
-  category: string;
-  title: string;
-  description: string;
-}
-
-export const trainingCourses: TrainingCourse[] = [
-  { slug: 'workplace-safety-ppe', category: 'Safety Fundamentals', title: 'Workplace Safety & PPE Awareness', description: 'Foundational training on common workplace hazards and the correct selection, use, and maintenance of personal protective equipment.' },
-  { slug: 'working-at-height', category: 'High-Risk Operations', title: 'Working-at-Height & Dropped-Object Prevention', description: 'Awareness training on the risks of working at height and practical measures to prevent dropped-object incidents.' },
-  { slug: 'electrical-safety', category: 'High-Risk Operations', title: 'Electrical Safety Awareness', description: 'Core awareness of electrical hazards on site, safe approaches, and the boundaries between routine and specialist work.' },
-  { slug: 'road-safety-defensive-driving', category: 'Transport Safety', title: 'Road Safety & Defensive Driving Awareness', description: 'Driver-focused training on defensive driving principles, journey risk, and behaviour that reduces road incidents.' },
-  { slug: 'fatigue-management', category: 'Transport Safety', title: 'Fatigue Management', description: 'Training on recognising fatigue, understanding its effect on safety, and applying practical controls in operational settings.' },
-  { slug: 'risk-assessment-incident-reporting', category: 'Safety Fundamentals', title: 'Risk Assessment & Incident Reporting', description: 'Practical training on identifying hazards, assessing risk, and reporting incidents clearly and consistently.' },
-  { slug: 'emergency-awareness', category: 'Emergency Preparedness', title: 'Emergency Awareness', description: 'Building awareness of emergency procedures, roles, and responses so teams can react effectively when something goes wrong.' },
-  { slug: 'environmental-training', category: 'Environmental', title: 'Environmental Training', description: 'Training that builds understanding of environmental responsibilities and the day-to-day actions that reduce environmental harm.' },
-];
-
 export const about = {
   mission:
-    'To support organisations in Rwanda and the wider region with practical safety, environmental, and operational solutions that protect people, reduce harm, and strengthen performance.',
+    'To support organisations in Rwanda with practical safety, environmental, and operational solutions that protect people, reduce harm, and strengthen performance, while considering regional engagements individually.',
   vision:
     'To be a trusted partner for businesses and institutions seeking safer operations, responsible environmental management, and sustainable growth.',
   description:
-    'EcoHealth & Transport Solutions Ltd is a Rwanda-based company providing environment, health, and safety consultancy, environmental management, training, telecommunications field support, transport safety, and waste management solutions. We work with organisations that take safety and environmental responsibility seriously — helping them build systems, capability, and documentation that stand up to scrutiny.',
+    'EcoHealth & Transport Solutions Ltd is a Rwanda-based company offering environment, health, and safety consultancy, environmental management, training, telecommunications field support, transport safety, and waste management support. The scope of each engagement is agreed to match project needs, available resources, and any required professional authorisations.',
   coreValues: [
     { title: 'Safety first', body: 'The protection of people guides every decision we make and every recommendation we give.' },
     { title: 'Integrity', body: 'We give honest, evidence-based advice — even when it is not the easiest message to deliver.' },
@@ -333,7 +315,7 @@ export const about = {
 
 export const partnersContent = {
   intro:
-    'EcoHealth & Transport Solutions Ltd works with contractors, principals, procurement teams, and organisations looking for a capable local partner for safety, environmental, and field operations in Rwanda.',
+    'EcoHealth & Transport Solutions Ltd welcomes enquiries from contractors, principals, procurement teams, and organisations seeking a potential local partner for safety, environmental, and field operations in Rwanda.',
   subcontracting: [
     'EHS and safety supervision support for active projects',
     'Environmental management and monitoring on site',
@@ -345,7 +327,7 @@ export const partnersContent = {
     'Clear, documented scope and deliverables for tender responses',
     'Safety and environmental credentials aligned to client requirements',
     'Flexibility to support prime contractors as a specialist subcontractor',
-    'Local presence and response capacity in Rwanda',
+    'Rwanda-based engagement, scoped to project requirements and capacity',
   ],
 };
 

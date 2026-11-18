@@ -9,15 +9,19 @@ export function Footer() {
   const hasContact = Boolean(settings.email || settings.phone || settings.address);
 
   return (
-    <footer className="bg-forest-800 text-ivory">
-      <div className="mx-auto max-w-8xl px-6 py-20 lg:px-10 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
+    <footer className="relative overflow-hidden bg-forest-950 text-ivory">
+      <div className="pointer-events-none absolute inset-0 opacity-[0.05]" aria-hidden="true">
+        <div className="h-full w-full hairline-grid" />
+      </div>
+
+      <div className="shell relative">
+        <div className="grid gap-14 pb-16 pt-20 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-24">
+          <div className="lg:col-span-5">
             <Logo tone="light" size="md" />
-            <p className="mt-8 max-w-md font-serif text-lg italic leading-relaxed text-sage-light">
+            <p className="mt-8 max-w-sm font-serif text-2xl italic leading-snug text-sage-light lg:text-[1.75rem]">
               {company.tagline}
             </p>
-            <p className="mt-6 max-w-md text-sm leading-relaxed text-ivory/60">
+            <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/55">
               EHS consultancy, environmental management, workforce training, technical field support, and transport
               safety solutions for businesses and projects in {company.country}.
             </p>
@@ -26,20 +30,20 @@ export function Footer() {
                 href={settings.linkedinUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-sm text-ivory/70 transition-colors hover:text-white"
+                className="mt-7 inline-flex items-center gap-2.5 border border-white/15 px-4 py-2.5 text-[10px] font-semibold uppercase tracking-[0.16em] text-ivory/70 transition-colors hover:border-ivory/50 hover:text-ivory"
               >
-                <Linkedin className="h-4 w-4" />
+                <Linkedin className="h-3.5 w-3.5" />
                 LinkedIn
               </a>
             )}
           </div>
 
-          <div className="lg:col-span-2">
-            <h2 className="text-xs font-medium uppercase tracking-widest text-sage-dark">Company</h2>
-            <ul className="mt-6 space-y-3">
+          <div className="lg:col-span-2 lg:col-start-7">
+            <h2 className="text-[9.5px] font-semibold uppercase tracking-editorial text-sage-dark">Company</h2>
+            <ul className="mt-5 space-y-3">
               {footerNav[0].links.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="link-underline text-sm text-ivory/70 transition-colors hover:text-white">
+                  <Link to={link.path} className="link-underline text-sm text-ivory/60 transition-colors hover:text-ivory">
                     {link.label}
                   </Link>
                 </li>
@@ -48,11 +52,11 @@ export function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h2 className="text-xs font-medium uppercase tracking-widest text-sage-dark">Services</h2>
-            <ul className="mt-6 space-y-3">
+            <h2 className="text-[9.5px] font-semibold uppercase tracking-editorial text-sage-dark">Services</h2>
+            <ul className="mt-5 space-y-3">
               {footerNav[1].links.map((link) => (
                 <li key={link.path}>
-                  <Link to={link.path} className="link-underline text-sm text-ivory/70 transition-colors hover:text-white">
+                  <Link to={link.path} className="link-underline text-sm text-ivory/60 transition-colors hover:text-ivory">
                     {link.label}
                   </Link>
                 </li>
@@ -60,30 +64,27 @@ export function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
-            <h2 className="text-xs font-medium uppercase tracking-widest text-sage-dark">Contact</h2>
-            <ul className="mt-6 space-y-4 text-sm text-ivory/70">
+          <div className="lg:col-span-2">
+            <h2 className="text-[9.5px] font-semibold uppercase tracking-editorial text-sage-dark">Contact</h2>
+            <ul className="mt-5 space-y-4 text-sm text-ivory/60">
               {settings.email && (
-                <li className="flex items-start gap-3">
-                  <Mail className="mt-0.5 h-4 w-4 flex-shrink-0 text-forest-400" />
-                  <a href={`mailto:${settings.email}`} className="break-all link-underline hover:text-white">
+                <li className="flex items-start gap-2.5">
+                  <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-forest-400" />
+                  <a href={`mailto:${settings.email}`} className="break-all link-underline hover:text-ivory">
                     {settings.email}
                   </a>
                 </li>
               )}
               {settings.phone && (
-                <li className="flex items-start gap-3">
-                  <Phone className="mt-0.5 h-4 w-4 flex-shrink-0 text-forest-400" />
-                  <a
-                    href={`tel:${settings.phone.replace(/\s+/g, '')}`}
-                    className="link-underline hover:text-white"
-                  >
+                <li className="flex items-start gap-2.5">
+                  <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-forest-400" />
+                  <a href={`tel:${settings.phone.replace(/\s+/g, '')}`} className="link-underline hover:text-ivory">
                     {settings.phone}
                   </a>
                 </li>
               )}
-              <li className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 flex-shrink-0 text-forest-400" />
+              <li className="flex items-start gap-2.5">
+                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-forest-400" />
                 <span>{settings.address || 'Rwanda — serving projects regionally'}</span>
               </li>
             </ul>
@@ -93,7 +94,7 @@ export function Footer() {
                 href={settings.companyProfileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 border border-white/25 px-4 py-2.5 text-xs font-medium uppercase tracking-wider text-white transition-colors hover:border-white hover:bg-white hover:text-forest-800"
+                className="mt-6 inline-flex items-center gap-2 border border-white/20 px-4 py-2.5 text-[9.5px] font-semibold uppercase tracking-[0.16em] text-ivory transition-colors hover:border-ivory hover:bg-ivory hover:text-forest-950"
               >
                 <Download className="h-3.5 w-3.5" />
                 {settings.companyProfileLabel || 'Company profile'}
@@ -101,7 +102,7 @@ export function Footer() {
             ) : (
               <Link
                 to="/partners"
-                className="mt-6 inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wider text-sage-light hover:text-white"
+                className="mt-6 inline-flex items-center gap-2 text-[9.5px] font-semibold uppercase tracking-[0.16em] text-sage-light transition-colors hover:text-ivory"
               >
                 <span className="link-underline">Request company profile</span>
                 <ArrowRight className="h-3.5 w-3.5" />
@@ -109,39 +110,47 @@ export function Footer() {
             )}
 
             {!hasContact && (
-              <p className="mt-6 text-xs leading-relaxed text-ivory/40">
+              <p className="mt-5 text-xs leading-relaxed text-ivory/40">
                 All enquiries are handled through the request form and answered directly by our team.
               </p>
             )}
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col items-start justify-between gap-6 border-t border-white/10 pt-10 lg:flex-row lg:items-center">
-          <p className="font-display text-xl text-white lg:text-2xl">Ready to discuss your project requirements?</p>
+        <div className="flex flex-col items-start justify-between gap-6 border-t border-white/10 py-8 lg:flex-row lg:items-center">
+          <p className="max-w-lg font-display text-xl font-light leading-snug text-ivory">
+            Ready to discuss your project requirements?
+          </p>
           <Link
             to="/contact"
-            className="group inline-flex items-center gap-2 border border-white/30 px-6 py-3 text-sm font-medium uppercase tracking-wider text-white transition-all duration-500 ease-elegant hover:border-white hover:bg-white hover:text-forest-800"
+            className="group inline-flex items-center gap-4 border border-white/25 px-6 py-3.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory transition-all duration-500 ease-editorial hover:gap-6 hover:border-ivory hover:bg-ivory hover:text-forest-950"
           >
-            Start a Conversation
-            <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            Start a conversation
+            <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1" />
           </Link>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-white/10 pt-8 text-xs text-ivory/50 sm:flex-row sm:items-center">
+        <div className="flex flex-col items-start justify-between gap-4 border-t border-white/10 py-7 text-[10.5px] uppercase tracking-[0.14em] text-ivory/40 sm:flex-row sm:items-center">
           <p>
-            © {new Date().getFullYear()} {company.name}. All rights reserved.
+            © {new Date().getFullYear()} {company.name}
           </p>
-          <div className="flex items-center gap-6">
-            <Link to="/privacy" className="link-underline hover:text-white">
-              Privacy Policy
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <Link to="/privacy" className="link-underline hover:text-ivory">
+              Privacy
             </Link>
-            <span className="text-ivory/30">|</span>
+            <span className="text-ivory/20">|</span>
             <span>Rwanda</span>
-            <span className="text-ivory/30">|</span>
-            <Link to="/admin" className="link-underline hover:text-white">
+            <span className="text-ivory/20">|</span>
+            <Link to="/admin" className="link-underline hover:text-ivory">
               Staff login
             </Link>
           </div>
+        </div>
+
+        <div className="select-none overflow-hidden pb-6" aria-hidden="true">
+          <p className="whitespace-nowrap font-display text-[clamp(3.5rem,14vw,12rem)] font-light leading-[0.75] tracking-[-0.05em] text-white/[0.06]">
+            EcoHealth
+          </p>
         </div>
       </div>
     </footer>
