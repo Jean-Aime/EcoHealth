@@ -113,7 +113,7 @@ export function AboutPage() {
                     The principles that guide our work.
                   </h2>
                   <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-                    Every engagement is shaped by the same set of values — they define what we will and will not do,
+                    Every engagement is shaped by the same set of values. They define what we will and will not do,
                     and how we work alongside our clients.
                   </p>
                 </div>
@@ -234,7 +234,7 @@ export function AboutPage() {
                   <LineReveal
                     lines={[
                       'Committed to health, safety, and',
-                      'environmental responsibility —',
+                      'environmental responsibility',
                       'in how we work and what we deliver.',
                     ]}
                   />

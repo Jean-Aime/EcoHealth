@@ -2,7 +2,7 @@ import { Link } from '@/lib/router';
 import { ArrowRight, Download, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
 import { company, footerNav } from '@/data/content';
 import { useSiteSettings } from '@/lib/cms';
-import { Logo } from '@/components/Logo';
+import { BrandLogo } from '@/components/Logo';
 
 export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: boolean }) {
   const settings = useSiteSettings();
@@ -21,7 +21,11 @@ export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: bool
       <div className="shell relative">
         <div className="grid gap-14 pb-16 pt-20 lg:grid-cols-12 lg:gap-10 lg:pb-20 lg:pt-24">
           <div className="lg:col-span-5">
-            <Logo tone="light" size="md" />
+            <BrandLogo
+              alt="EcoHealth & Transport Solutions Ltd"
+              onDarkBackground
+              className="h-16"
+            />
             <p className="mt-8 max-w-sm font-serif text-2xl italic leading-snug text-sage-light lg:text-[1.75rem]">
               {company.tagline}
             </p>
@@ -89,7 +93,7 @@ export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: bool
               )}
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-forest-400" />
-                <span>{settings.address || 'Rwanda — serving projects regionally'}</span>
+                <span>{settings.address || 'Rwanda, serving projects regionally'}</span>
               </li>
             </ul>
 

@@ -4,15 +4,23 @@ interface LogoProps {
   className?: string;
 }
 
-/**
- * EcoHealth lockup: a leaf inside a thin global ring — environmental care
- * delivered with international operating standards.
- *
- * The supplied logo artwork was not available in the project, so this is a
- * scalable placeholder built from the brand palette. Replace the paths in
- * `LogoMark` with the official artwork when it is approved — every use of the
- * logo (header, footer, favicon) then updates together.
- */
+interface BrandLogoProps {
+  alt: string;
+  onDarkBackground?: boolean;
+  className?: string;
+}
+
+export function BrandLogo({ alt, onDarkBackground = false, className = '' }: BrandLogoProps) {
+  return (
+    <img
+      src="/logp.png"
+      alt={alt}
+      className={`block w-auto object-contain ${className} ${onDarkBackground ? 'brightness-0 invert' : ''}`}
+    />
+  );
+}
+
+/** Legacy mark retained for admin branding; public pages use the supplied horizontal logo asset. */
 export function LogoMark({ className = '' }: { className?: string }) {
   return (
     <svg

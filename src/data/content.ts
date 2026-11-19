@@ -21,9 +21,9 @@ export const company = {
   whyEcoHealth: [
     { title: 'Practical, risk-based safety solutions', body: 'We focus on real-world risk reduction rather than paperwork-only compliance, helping teams identify and manage hazards that matter.' },
     { title: 'Services tailored to project requirements', body: 'No two projects are the same. We adapt scope, deliverables, and approach to each client’s operational context and risk profile.' },
-    { title: 'Prevention and compliance', body: 'Our work prioritises prevention — building systems and habits that reduce incidents and satisfy regulatory and contractual obligations.' },
+    { title: 'Prevention and compliance', body: 'Our work prioritises prevention building systems and habits that reduce incidents and satisfy regulatory and contractual obligations.' },
     { title: 'Documentation and continuous improvement', body: 'Clear reporting, traceable records, and structured improvement cycles help clients demonstrate performance and learn from every project.' },
-    { title: 'Flexible consultancy, training, and project support', body: 'Engagements range from short advisory visits to embedded project support and structured training programmes — scaled to what you need.' },
+    { title: 'Flexible consultancy, training, and project support', body: 'Engagements range from short advisory visits to embedded project support and structured training programmes, scaled to your needs.' },
   ],
 };
 
@@ -101,7 +101,7 @@ export const services: Service[] = [
     image: 'https://images.pexels.com/photos/10365944/pexels-photo-10365944.jpeg?auto=compress&cs=tinysrgb&w=1400',
     imageAlt: 'Group of workers in orange safety vests walking through a lush forest',
     intro:
-      'We help organisations understand and manage their environmental responsibilities — from site-level impacts to broader sustainability commitments. Our focus is practical: environmental management that fits the way your project actually runs.',
+      'We help organisations understand and manage their environmental responsibilities from site-level impacts to broader sustainability commitments. Our focus is practical: environmental management that fits the way your project actually runs.',
     problems: [
       'Environmental obligations that are unclear or poorly documented',
       'Site activities with potential impacts on land, water, or communities',
@@ -136,7 +136,7 @@ export const services: Service[] = [
     title: 'Training & Capacity Building',
     shortTitle: 'Training',
     summary:
-      'Workplace safety, environmental, and operational training designed to build real capability in teams — from frontline workers to supervisors and managers.',
+      'Workplace safety, environmental, and operational training designed to build real capability across teams, from frontline workers to supervisors and managers.',
     image: 'https://images.pexels.com/photos/8761547/pexels-photo-8761547.jpeg?auto=compress&cs=tinysrgb&w=1400',
     imageAlt: 'Diverse group of business professionals attentively attending a conference session',
     intro:
@@ -177,7 +177,7 @@ export const services: Service[] = [
     title: 'Telecommunications & Technical Field Support',
     shortTitle: 'Telecom Field Support',
     summary:
-      'Technical field support for telecommunications and infrastructure projects — covering deployment, inspection, and safety supervision in the field.',
+      'Technical field support for telecommunications and infrastructure projects, covering deployment, inspection, and safety supervision in the field.',
     image: 'https://images.pexels.com/photos/19728112/pexels-photo-19728112.jpeg?auto=compress&cs=tinysrgb&w=1400',
     imageAlt: 'Two workers repairing a cellular tower against a cloudy sky',
     intro:
@@ -216,11 +216,11 @@ export const services: Service[] = [
     title: 'Transport, Fleet Safety & Logistics',
     shortTitle: 'Transport & Fleet Safety',
     summary:
-      'Transport safety and fleet management support that helps organisations move people and materials more safely — on site and across the road network.',
+      'Transport safety and fleet management support that helps organisations move people and materials more safely on site and across the road network.',
     image: 'https://images.pexels.com/photos/1606957/pexels-photo-1606957.jpeg?auto=compress&cs=tinysrgb&w=1400',
     imageAlt: 'A row of trucks and car transporters parked at sunset in an open parking lot',
     intro:
-      'We help organisations manage transport risk — from fleet safety policies to driver behaviour and journey planning. Our support is practical and field-oriented, focused on operations in Rwanda; regional engagements are considered individually against scope and capacity.',
+      'We help organisations manage transport risk from fleet safety policies to driver behaviour and journey planning. Our support is practical and field-oriented, focused on operations in Rwanda; regional engagements are considered individually against scope and capacity.',
     problems: [
       'Transport-related incidents affecting people, assets, and schedules',
       'Inconsistent driver standards and journey management practices',
@@ -299,14 +299,14 @@ export const about = {
     'EcoHealth & Transport Solutions Ltd is a Rwanda-based company offering environment, health, and safety consultancy, environmental management, training, telecommunications field support, transport safety, and waste management support. The scope of each engagement is agreed to match project needs, available resources, and any required professional authorisations.',
   coreValues: [
     { title: 'Safety first', body: 'The protection of people guides every decision we make and every recommendation we give.' },
-    { title: 'Integrity', body: 'We give honest, evidence-based advice — even when it is not the easiest message to deliver.' },
+    { title: 'Integrity', body: 'We give honest, evidence-based advice even when it is not the easiest message to deliver.' },
     { title: 'Client focus', body: 'We tailor our work to the realities of each project and the priorities of the people we work with.' },
     { title: 'Accountability', body: 'We stand behind our deliverables and are clear about what we know, what we recommend, and why.' },
     { title: 'Environmental responsibility', body: 'We help clients reduce environmental harm and operate in ways that respect communities and ecosystems.' },
     { title: 'Continuous improvement', body: 'We learn from every engagement and help clients build the same habit into their own operations.' },
   ],
   approach: [
-    'We begin by understanding the operational context — the site, the team, the risks, and the obligations that matter.',
+    'We begin by understanding the operational context, including the site, the team, the risks, and the obligations that matter.',
     'We then define a scope of support that is proportionate to the risk and useful to the people who will act on it.',
     'We deliver practical work on the ground and clear documentation behind it, so improvements are visible and traceable.',
     'We finish with recommendations that help clients keep improving long after the engagement ends.',
@@ -352,9 +352,9 @@ export const articles: Article[] = [
     readTime: '5 min read',
     body: [
       'Risk assessment is the foundation of safe operations, but it loses value the moment it becomes a document produced for its own sake. The most useful assessments are built from direct observation of the work, conversations with the people doing it, and an honest accounting of what could go wrong.',
-      'Start with the actual tasks. Walk the site. Talk to supervisors and frontline workers. Identify the hazards that are present — not the hazards that are convenient to list — and assess the risk in the context of how the work is really performed.',
+      'Start with the actual tasks. Walk the site. Talk to supervisors and frontline workers. Identify the hazards that are present, not the hazards that are convenient to list, and assess the risk in the context of how the work is really performed.',
       'Then focus on controls that are practical and verifiable. A control that cannot be checked is a control that will drift. Document who is responsible, how the control is maintained, and what happens when it fails.',
-      'Finally, treat the assessment as a living document. When the work changes, the assessment changes. When an incident occurs, the assessment is reviewed. The goal is not a perfect document — it is a safer operation.',
+      'Finally, treat the assessment as a living document. When the work changes, the assessment changes. When an incident occurs, the assessment is reviewed. The goal is not a perfect document. It is a safer operation.',
     ],
   },
   {
@@ -367,7 +367,7 @@ export const articles: Article[] = [
     body: [
       'Infrastructure projects shape the environment around them. Excavation, movement of materials, vehicle traffic, and the presence of a workforce all create impacts that need to be understood and managed.',
       'An environmental management plan should be specific to the site and the activity. Generic plans copied between projects rarely capture the risks that matter. The plan should identify the likely impacts, set out controls, and define how performance will be monitored.',
-      'Monitoring does not need to be complex, but it does need to be consistent. Simple, regular checks — supported by clear records — are more valuable than occasional detailed studies that nobody acts on.',
+      'Monitoring does not need to be complex, but it does need to be consistent. Simple, regular checks supported by clear records are more valuable than occasional detailed studies that nobody acts on.',
       'The objective is straightforward: reduce harm, meet obligations, and leave the site in a condition that respects the community and ecosystem around it.',
     ],
   },
@@ -382,7 +382,7 @@ export const articles: Article[] = [
       'A strong safety culture is the sum of many small decisions made over time. It is visible in how leaders respond to bad news, whether workers feel able to raise concerns, and what happens after an incident occurs.',
       'Culture cannot be installed by a single training session or a new policy document. It is built through consistent leadership behaviour, clear expectations, and a genuine willingness to learn from events rather than punish them away.',
       'Reporting is a leading indicator. When people report near-misses and concerns freely, the organisation has the information it needs to act before a serious incident occurs. When reporting drops, it usually means the culture has a problem.',
-      'The organisations with the strongest safety performance are rarely the ones with the most paperwork. They are the ones where safety is part of how decisions are made — not an additional layer applied afterwards.',
+      'The organisations with the strongest safety performance are rarely the ones with the most paperwork. They are the ones where safety is part of how decisions are made, not an additional layer applied afterwards.',
     ],
   },
   {
@@ -393,7 +393,7 @@ export const articles: Article[] = [
     date: '2025-06-10',
     readTime: '5 min read',
     body: [
-      'For many organisations, the highest-risk activity is not on site — it is on the road. Moving people, equipment, and materials exposes a workforce to traffic, fatigue, and vehicle-related hazards every day.',
+      'For many organisations, the highest-risk activity is on the road rather than on site. Moving people, equipment, and materials exposes a workforce to traffic, fatigue, and vehicle-related hazards every day.',
       'A structured approach to transport risk starts with policy, but it lives in practice. Driver standards, vehicle condition, journey planning, and fatigue management each play a part. When any one of them is weak, the others compensate only so far.',
       'Journey management is often overlooked. Planning the route, the timing, the rest breaks, and the communication points turns a risky trip into a managed activity. It does not eliminate risk, but it brings it within control.',
       'Finally, incident reporting for transport should be treated with the same seriousness as site incidents. The patterns that lead to serious road events are usually visible in the minor events that came before them.',

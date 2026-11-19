@@ -61,11 +61,11 @@ VALUES
     'A risk assessment is only useful if it reflects what actually happens on site. Here is how to keep it grounded.',
     'Risk assessment is the foundation of safe operations, but it loses value the moment it becomes a document produced for its own sake. The most useful assessments are built from direct observation of the work, conversations with the people doing it, and an honest accounting of what could go wrong.
 
-Start with the actual tasks. Walk the site. Talk to supervisors and frontline workers. Identify the hazards that are present — not the hazards that are convenient to list — and assess the risk in the context of how the work is really performed.
+Start with the actual tasks. Walk the site. Talk to supervisors and frontline workers. Identify the hazards that are present, not the hazards that are convenient to list, and assess the risk in the context of how the work is really performed.
 
 Then focus on controls that are practical and verifiable. A control that cannot be checked is a control that will drift. Document who is responsible, how the control is maintained, and what happens when it fails.
 
-Finally, treat the assessment as a living document. When the work changes, the assessment changes. When an incident occurs, the assessment is reviewed. The goal is not a perfect document — it is a safer operation.',
+Finally, treat the assessment as a living document. When the work changes, the assessment changes. When an incident occurs, the assessment is reviewed. The goal is not a perfect document. It is a safer operation.',
     NULL,
     '5 min read',
     true,
@@ -80,7 +80,7 @@ Finally, treat the assessment as a living document. When the work changes, the a
 
 An environmental management plan should be specific to the site and the activity. Generic plans copied between projects rarely capture the risks that matter. The plan should identify the likely impacts, set out controls, and define how performance will be monitored.
 
-Monitoring does not need to be complex, but it does need to be consistent. Simple, regular checks — supported by clear records — are more valuable than occasional detailed studies that nobody acts on.
+Monitoring does not need to be complex, but it does need to be consistent. Simple, regular checks supported by clear records are more valuable than occasional detailed studies that nobody acts on.
 
 The objective is straightforward: reduce harm, meet obligations, and leave the site in a condition that respects the community and ecosystem around it.',
     NULL,
@@ -99,7 +99,7 @@ Culture cannot be installed by a single training session or a new policy documen
 
 Reporting is a leading indicator. When people report near-misses and concerns freely, the organisation has the information it needs to act before a serious incident occurs. When reporting drops, it usually means the culture has a problem.
 
-The organisations with the strongest safety performance are rarely the ones with the most paperwork. They are the ones where safety is part of how decisions are made — not an additional layer applied afterwards.',
+The organisations with the strongest safety performance are rarely the ones with the most paperwork. They are the ones where safety is part of how decisions are made, not an additional layer applied afterwards.',
     NULL,
     '4 min read',
     true,
@@ -110,7 +110,7 @@ The organisations with the strongest safety performance are rarely the ones with
     'Managing Transport Risk Across Fleet Operations',
     'Transport Safety',
     'Transport is one of the highest-risk activities many organisations undertake. A structured approach makes the difference.',
-    'For many organisations, the highest-risk activity is not on site — it is on the road. Moving people, equipment, and materials exposes a workforce to traffic, fatigue, and vehicle-related hazards every day.
+    '    For many organisations, the highest-risk activity is on the road rather than on site. Moving people, equipment, and materials exposes a workforce to traffic, fatigue, and vehicle-related hazards every day.
 
 A structured approach to transport risk starts with policy, but it lives in practice. Driver standards, vehicle condition, journey planning, and fatigue management each play a part. When any one of them is weak, the others compensate only so far.
 

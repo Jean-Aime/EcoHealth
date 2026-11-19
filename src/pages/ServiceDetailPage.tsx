@@ -207,7 +207,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
                   </ul>
                 </div>
                 <p className="mt-5 text-[11px] leading-relaxed text-muted">
-                  Deliverables are tailored to each engagement. Outcomes depend on project scope and context — we do not
+                  Deliverables are tailored to each engagement. Outcomes depend on project scope and context. We do not
                   offer unsupported guarantees.
                 </p>
               </Reveal>

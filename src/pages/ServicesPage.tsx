@@ -13,7 +13,7 @@ const heroImage =
 const deliveryModel = [
   {
     title: 'Scoped to the risk',
-    body: 'Every engagement starts with the operational context — the site, the team, the obligations, and the risks that actually matter.',
+    body: 'Every engagement starts with the operational context, including the site, the team, the obligations, and the risks that actually matter.',
   },
   {
     title: 'Delivered in the field',
@@ -37,7 +37,7 @@ export function ServicesPage() {
         eyebrow="Our services"
         title="Six disciplines. One standard of delivery."
         titleLines={['Six disciplines.', 'One standard', 'of delivery.']}
-        subtitle="Each service is delivered with the same practical, risk-based approach — tailored to your project, documented for compliance, and focused on real outcomes."
+        subtitle="Each service is delivered with the same practical, risk-based approach, tailored to your project, documented for compliance, and focused on real outcomes."
         image={heroImage}
         imageAlt="Two construction workers in safety equipment beside a waterfront on an overcast day"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Services' }]}
@@ -152,7 +152,7 @@ export function ServicesPage() {
         eyebrow="Get in touch"
         headline="Not sure which service you need?"
         headlineLines={['Not sure which', 'service you need?']}
-        body="Tell us about your project and we will help you identify the right scope of support — whether that is one service or several working together."
+        body="Tell us about your project and we will help you identify the right scope of support, whether that is one service or several working together."
         ctaLabel="Start a conversation"
         ctaTo="/contact"
         variant="light"

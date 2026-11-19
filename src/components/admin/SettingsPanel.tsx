@@ -71,7 +71,7 @@ export function SettingsPanel() {
         <h1 className="mt-4 font-display text-display-sm font-semibold text-charcoal">Company details &amp; launch</h1>
         <p className="mt-2 max-w-2xl text-sm text-muted">
           Details entered here are published on the contact page, footer and structured data. Leave a field empty and it
-          is simply not shown — the site never displays placeholder contact information.
+          is simply not shown. The site never displays placeholder contact information.
         </p>
       </div>
 
@@ -139,7 +139,7 @@ export function SettingsPanel() {
 
               <h2 className="mt-10 font-display text-lg font-semibold text-charcoal">Company profile</h2>
               <p className="mt-2 text-sm text-muted">
-                The download button only appears once a link is set here — no broken or placeholder downloads.
+                The download button only appears once a link is set here. No broken or placeholder downloads.
               </p>
               <div className="mt-5 grid gap-5">
                 <AdminField label="Profile document URL" htmlFor="settings-profile-url">

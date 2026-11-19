@@ -72,7 +72,7 @@ export function ProjectsPage() {
                     Where we bring value to projects.
                   </h2>
                   <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted">
-                    These are the disciplines we deliver across the project lifecycle — as standalone scopes or
+                    These are the disciplines we deliver across the project lifecycle, as standalone scopes or
                     integrated programme support.
                   </p>
                   <div className="mt-8">
@@ -156,7 +156,7 @@ export function ProjectsPage() {
                   Verified case studies, published with integrity.
                 </h2>
                 <p className="mt-5 max-w-xl text-sm leading-relaxed text-ivory/60">
-                  We present approved project case studies — with verified scope, responsibilities, and outcomes — once
+                  We present approved project case studies with verified scope, responsibilities, and outcomes once
                   they have been reviewed for publication. We do not publish invented projects, client names, or
                   statistics.
                 </p>

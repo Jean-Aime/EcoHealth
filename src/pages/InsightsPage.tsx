@@ -47,7 +47,7 @@ export function InsightsPage() {
         eyebrow="Resources & insights"
         title="Practical perspectives on safety, environment, and operations."
         titleLines={['Practical perspectives', 'on safety, environment,', 'and operations.']}
-        subtitle="Articles on occupational health and safety, environmental management, transport safety, infrastructure, and risk management — written for people who manage real projects."
+        subtitle="Articles on occupational health and safety, environmental management, transport safety, infrastructure, and risk management, written for people who manage real projects."
         image={heroImage}
         imageAlt="A group collaborating in a bright conference room"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Insights' }]}

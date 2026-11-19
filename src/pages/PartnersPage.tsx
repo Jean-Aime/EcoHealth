@@ -46,7 +46,7 @@ export function PartnersPage() {
                     Specialist scopes, delivered as part of your team.
                   </h2>
                   <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
-                    We engage as a subcontractor on prime contractor projects — providing safety, environmental,
+                    We engage as a subcontractor on prime contractor projects, providing safety, environmental,
                     training, technical field, and transport safety support under your overall programme.
                   </p>
                   <div className="mt-8">
@@ -96,7 +96,7 @@ export function PartnersPage() {
                   Built for tender and procurement processes.
                 </h2>
                 <p className="mt-5 max-w-xl text-sm leading-relaxed text-ivory/60">
-                  We understand what procurement teams and principals need from a specialist partner — clear scopes,
+                  We understand what procurement teams and principals need from a specialist partner: clear scopes,
                   documented capabilities, and reliable delivery. We respond to enquiries with the information that
                   matters for your evaluation.
                 </p>
@@ -171,7 +171,7 @@ export function PartnersPage() {
                 </h2>
                 <p className="mt-5 max-w-md text-sm leading-relaxed text-charcoal-light">
                   Whether you are a prime contractor looking for a specialist subcontractor, a procurement team
-                  evaluating suppliers, or an organisation exploring a strategic partnership — we would like to hear
+                  evaluating suppliers, or an organisation exploring a strategic partnership. We would like to hear
                   from you.
                 </p>
               </Reveal>
@@ -180,7 +180,7 @@ export function PartnersPage() {
                 {[
                   {
                     title: 'For prime contractors',
-                    body: 'We provide subcontracted safety, environmental, field, and training scopes — integrated into your project team and reporting structure.',
+                    body: 'We provide subcontracted safety, environmental, field, and training scopes, integrated into your project team and reporting structure.',
                   },
                   {
                     title: 'For procurement teams',

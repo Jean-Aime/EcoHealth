@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { Menu, X, ArrowRight, ArrowUpRight } from 'lucide-react';
 import { Link } from '@/lib/router';
 import { navItems } from '@/data/content';
-import { Logo } from '@/components/Logo';
+import { BrandLogo } from '@/components/Logo';
 
 const serviceLinks = [
   { slug: 'ehs-consultancy', label: 'EHS Consultancy & Compliance', index: '01' },
@@ -89,8 +89,8 @@ export function Header({ currentPath, overDarkHero }: { currentPath: string; ove
         }`}
       >
         <div className="shell flex items-center justify-between gap-6 py-4 lg:py-5">
-          <Link to="/" className="flex shrink-0 items-center gap-3" aria-label="EcoHealth & Transport Solutions Ltd — home">
-            <Logo tone={light ? 'light' : 'dark'} size="sm" />
+          <Link to="/" className="flex shrink-0 items-center" aria-label="EcoHealth & Transport Solutions Ltd home">
+            <BrandLogo alt="" onDarkBackground={light} className="h-9 sm:h-10 lg:h-11" />
           </Link>
 
           <nav aria-label="Primary" className="hidden items-center gap-0.5 lg:flex">
@@ -256,7 +256,11 @@ export function Header({ currentPath, overDarkHero }: { currentPath: string; ove
           }`}
         >
           <div className="flex items-center justify-between border-b border-white/10 px-6 py-5">
-            <Logo tone="light" size="sm" />
+            <BrandLogo
+              alt="EcoHealth Transport Solutions"
+              onDarkBackground
+              className="h-9 sm:h-10 lg:h-11"
+            />
             <button
               ref={closeButtonRef}
               className="flex h-10 w-10 items-center justify-center text-ivory"

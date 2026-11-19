@@ -219,7 +219,7 @@ export function ContactPage() {
 
                   {!hasContact && (
                     <p className="mt-6 text-[11px] leading-relaxed text-ivory/35">
-                      Our team responds to every enquiry submitted here — please use the form and we will reply directly.
+                      Our team responds to every enquiry submitted here. Please use the form and we will reply directly.
                     </p>
                   )}
                 </div>

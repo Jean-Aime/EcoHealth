@@ -1766,7 +1766,7 @@ function OnlineLearningPanel({
                     event.target.checked ? 'Online delivery enabled.' : 'Online delivery disabled.',
                   )}
                 />
-                <span>Online delivery enabled — the programme appears in the catalogue and the learner portal.</span>
+                <span>Online delivery enabled. The programme appears in the catalogue and the learner portal.</span>
               </label>
               <label className="mt-4 flex items-start gap-3 text-sm text-charcoal-light">
                 <input
@@ -1782,7 +1782,7 @@ function OnlineLearningPanel({
                 <span>Require every published chapter to be complete before a certificate can be issued.</span>
               </label>
               <p className="mt-4 border-l border-forest-700/30 pl-3 text-[11px] leading-relaxed text-muted">
-                {course.published ? 'Course is published.' : 'Course is a draft — learners cannot see it yet.'} Certificates
+                {course.published ? 'Course is published.' : 'Course is a draft. Learners cannot see it yet.'} Certificates
                 still require a completed session, recorded attendance and any configured assessment.
               </p>
             </div>

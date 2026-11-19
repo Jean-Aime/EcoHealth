@@ -33,7 +33,7 @@ const closingImage = 'https://images.pexels.com/photos/8487361/pexels-photo-8487
 const capabilities = [
   {
     title: 'Integrated service lines',
-    body: 'EHS, environmental, training, telecom field, transport, and waste — coordinated through one accountable partner.',
+    body: 'EHS, environmental, training, telecom field, transport, and waste, coordinated through one accountable partner.',
     image: capabilityImage,
     imageAlt: 'Workers in safety vests operating machinery on a construction site at night',
   },
@@ -51,7 +51,7 @@ const capabilities = [
   },
   {
     title: 'Documentation that holds up',
-    body: 'Clear, traceable records that support compliance, tenders, and continuous improvement — built to be useful, not decorative.',
+    body: 'Clear, traceable records built to support compliance, tenders, and continuous improvement. They are useful, not decorative.',
     image: services[2].image,
     imageAlt: services[2].imageAlt,
   },
@@ -61,7 +61,7 @@ const partnershipPoints = [
   { title: 'Subcontracting', body: 'Safety supervision, environmental management, field support, and training delivered as part of your project team.' },
   { title: 'Procurement readiness', body: 'Clear scopes, documented deliverables, and credentials aligned to client requirements.' },
   { title: 'Local presence', body: 'Based in Rwanda; regional engagements are considered individually against scope and capacity.' },
-  { title: 'Specialist scopes', body: 'Engaged for specific disciplines or embedded across a programme — scaled to what the project needs.' },
+  { title: 'Specialist scopes', body: 'Engaged for specific disciplines or embedded across a programme, with scope scaled to project needs.' },
 ];
 
 export function HomePage() {
@@ -283,7 +283,7 @@ function ServiceIndex() {
               Six disciplines. <span className="font-serif italic text-forest-700">One standard.</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-              Each service is delivered with the same practical, risk-based approach — adapted to your project, never
+              Each service is delivered with the same practical, risk-based approach, adapted to your project, never
               copied from a template.
             </p>
           </Reveal>
@@ -608,7 +608,7 @@ function ProcurementSection() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
             We work with prime contractors, institutional clients, and organisations seeking a specialist partner for
-            safety, environmental, and field operations in Rwanda — from subcontracted scopes to full programme support.
+            safety, environmental, and field operations in Rwanda, from subcontracted scopes to full programme support.
           </p>
         </Reveal>
 
@@ -760,7 +760,7 @@ function InsightsPreview() {
             </div>
             <div className="mt-7">
               <p className="text-[11px] leading-relaxed text-muted">
-                Written for the people who manage real projects — not for search engines.
+                Written for the people who manage real projects, not for search engines.
               </p>
             </div>
           </div>
