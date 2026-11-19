@@ -35,7 +35,7 @@ export function PartnersPage() {
       />
 
       {/* Subcontracting */}
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
@@ -86,7 +86,7 @@ export function PartnersPage() {
       </section>
 
       {/* Procurement readiness */}
-      <section className="grain-overlay relative overflow-hidden bg-charcoal py-20 text-ivory lg:py-28">
+      <section className="grain-overlay relative overflow-hidden bg-charcoal text-ivory section-space">
         <div className="shell relative z-10">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-7">
@@ -160,7 +160,7 @@ export function PartnersPage() {
       </section>
 
       {/* Partnership enquiry */}
-      <section id="partnership-enquiry" className="scroll-mt-24 bg-sage-light py-20 lg:py-28">
+      <section id="partnership-enquiry" className="scroll-mt-24 bg-sage-light section-space">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">

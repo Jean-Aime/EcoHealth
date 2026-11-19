@@ -68,7 +68,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
       />
 
       {/* Overview — editorial statement with a service dossier */}
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-8">
@@ -102,7 +102,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
       </section>
 
       {/* The challenge */}
-      <section className="bg-sage-light py-20 lg:py-28">
+      <section className="bg-sage-light section-space">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -135,7 +135,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
       </section>
 
       {/* Offerings — dark ledger */}
-      <section className="grain-overlay relative overflow-hidden bg-forest-950 py-20 text-ivory lg:py-28">
+      <section className="grain-overlay relative overflow-hidden bg-forest-950 text-ivory section-space">
         <div className="shell relative z-10">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -170,7 +170,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
       </section>
 
       {/* Benefits & deliverables */}
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-6">
@@ -217,7 +217,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
       </section>
 
       {/* Related services */}
-      <section className="border-t border-charcoal/10 bg-paper py-16 lg:py-20">
+      <section className="border-t border-charcoal/10 bg-paper section-space">
         <div className="shell">
           <div className="flex items-end justify-between gap-6">
             <Reveal>

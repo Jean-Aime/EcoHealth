@@ -61,7 +61,7 @@ export function ProjectsPage() {
       />
 
       {/* Capability dossier */}
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -106,7 +106,7 @@ export function ProjectsPage() {
       </section>
 
       {caseStudies.length > 0 ? (
-        <section className="border-t border-charcoal/10 bg-paper py-20 lg:py-28">
+        <section className="border-t border-charcoal/10 bg-paper section-space">
           <div className="shell">
             <div className="flex flex-col justify-between gap-6 border-b border-charcoal/15 pb-8 sm:flex-row sm:items-end">
               <Reveal>
@@ -149,7 +149,7 @@ export function ProjectsPage() {
               </p>
             </div>
 
-            <div className="px-5 py-20 sm:px-8 lg:col-span-7 lg:px-14 lg:py-28">
+            <div className="px-5 sm:px-8 section-space lg:col-span-7 lg:px-14">
               <Reveal>
                 <SectionMarker index="02" label="Case studies" tone="light" />
                 <h2 className="mt-6 max-w-lg font-display text-display-md text-ivory">
@@ -189,7 +189,7 @@ export function ProjectsPage() {
       )}
 
       {/* Cross-links by service */}
-      <section className="bg-ivory py-16 lg:py-20">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="flex items-end justify-between gap-6">
             <Reveal>

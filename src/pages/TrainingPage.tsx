@@ -66,7 +66,7 @@ export function TrainingPage() {
         meta={['Course outlines', 'Upcoming sessions', 'Individual & corporate enquiries']}
       />
 
-      <section className="bg-ivory py-16 lg:py-24">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -201,6 +201,7 @@ export function TrainingPage() {
       </section>
 
       <CTASection
+        compact
         eyebrow="Corporate training"
         headline="Need a course scoped to your workplace?"
         headlineLines={['Need a course scoped', 'to your workplace?']}

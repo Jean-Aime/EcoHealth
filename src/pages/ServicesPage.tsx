@@ -45,7 +45,7 @@ export function ServicesPage() {
         meta={['EHS', 'Environment', 'Training', 'Field support', 'Transport', 'Waste']}
       />
 
-      <section className="bg-ivory pb-20 pt-16 lg:pb-28 lg:pt-20">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="flex flex-col justify-between gap-4 border-t border-charcoal/15 pt-6 sm:flex-row sm:items-center">
             <p className="text-[9.5px] font-semibold uppercase tracking-[0.2em] text-muted">Service index</p>
@@ -108,7 +108,7 @@ export function ServicesPage() {
         </div>
       </section>
 
-      <section className="grain-overlay relative overflow-hidden bg-forest-950 py-20 text-ivory lg:py-28">
+      <section className="grain-overlay relative overflow-hidden bg-forest-950 text-ivory section-space">
         <div className="shell relative z-10">
           <div className="grid gap-10 lg:grid-cols-12">
             <div className="lg:col-span-4">
@@ -148,6 +148,7 @@ export function ServicesPage() {
       </section>
 
       <CTASection
+        compact
         eyebrow="Get in touch"
         headline="Not sure which service you need?"
         headlineLines={['Not sure which', 'service you need?']}

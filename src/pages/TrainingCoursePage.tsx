@@ -97,7 +97,7 @@ export function TrainingCoursePage({ slug }: { slug: string }) {
         meta={[formatDuration(course.duration_minutes), course.delivery_formats.join(' · ')]}
       />
 
-      <section className="bg-ivory py-16 lg:py-24">
+      <section className="bg-ivory section-space">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-7">
             <Reveal>

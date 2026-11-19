@@ -65,7 +65,7 @@ export function PrivacyPage() {
         meta={['Enquiries and training', 'No advertising profiles', 'Access restricted']}
       />
 
-      <section className="bg-ivory py-16 lg:py-24">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <aside className="lg:col-span-3">

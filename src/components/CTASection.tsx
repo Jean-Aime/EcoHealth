@@ -18,6 +18,8 @@ export function CTASection({
   imageAlt,
   secondaryTo,
   secondaryLabel,
+  compact = false,
+  pinned = false,
 }: {
   eyebrow?: string;
   headline: string;
@@ -30,12 +32,18 @@ export function CTASection({
   imageAlt?: string;
   secondaryTo?: string;
   secondaryLabel?: string;
+  compact?: boolean;
+  pinned?: boolean;
 }) {
   const dark = variant !== 'light';
   const bg = dark ? (variant === 'forest' ? 'bg-forest-900' : 'bg-charcoal') : 'bg-ivory';
 
-  return (
-    <section className={`relative isolate overflow-hidden ${bg} ${dark ? 'text-ivory' : 'text-charcoal'}`}>
+  const section = (
+    <section
+      className={`relative isolate overflow-hidden ${pinned ? 'sticky top-0 z-10 h-[100svh]' : ''} ${bg} ${
+        dark ? 'text-ivory' : 'text-charcoal'
+      }`}
+    >
       {image && (
         <>
           <ArtImage
@@ -44,7 +52,7 @@ export function CTASection({
             sizes="100vw"
             width={1920}
             height={1080}
-            parallax={30}
+            parallax={pinned ? 0 : 30}
             className="absolute inset-0 h-full w-full"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-forest-950 via-forest-950/85 to-forest-950/35" />
@@ -62,8 +70,10 @@ export function CTASection({
         </div>
       )}
 
-      <div className="shell relative z-10">
-        <div className="grid gap-12 py-24 lg:grid-cols-12 lg:items-end lg:py-32">
+      <div className={`shell relative z-10 ${pinned ? 'flex h-full items-center' : ''}`}>
+        <div
+          className={`grid gap-12 ${compact ? 'section-space' : 'py-24 lg:py-32'} lg:grid-cols-12 lg:items-end`}
+        >
           <div className="lg:col-span-8">
             <SectionMarker label={eyebrow ?? 'Start a conversation'} tone={dark ? 'light' : 'dark'} index="—" />
             <h2 className={`mt-7 max-w-4xl font-display text-display-lg ${dark ? 'text-ivory' : 'text-charcoal'}`}>
@@ -101,4 +111,6 @@ export function CTASection({
       </div>
     </section>
   );
+
+  return pinned ? <div className="relative h-[200svh]">{section}</div> : section;
 }

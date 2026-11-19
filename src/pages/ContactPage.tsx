@@ -66,7 +66,7 @@ export function ContactPage() {
         meta={['Quote', 'Training', 'Partnership']}
       />
 
-      <section className="bg-ivory py-16 lg:py-24">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">
             {/* Form */}

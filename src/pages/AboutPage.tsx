@@ -32,7 +32,7 @@ export function AboutPage() {
       />
 
       {/* Company statement */}
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-3">
@@ -71,7 +71,7 @@ export function AboutPage() {
       </section>
 
       {/* Mission & vision */}
-      <section className="grain-overlay relative overflow-hidden bg-forest-950 py-20 text-ivory lg:py-28">
+      <section className="grain-overlay relative overflow-hidden bg-forest-950 text-ivory section-space">
         <div className="shell relative z-10">
           <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-6">
@@ -102,7 +102,7 @@ export function AboutPage() {
       </section>
 
       {/* Core values — staggered editorial columns */}
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-4">
@@ -142,7 +142,7 @@ export function AboutPage() {
       </section>
 
       {/* Approach */}
-      <section className="bg-sage-light py-20 lg:py-28">
+      <section className="bg-sage-light section-space">
         <div className="shell">
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <div className="lg:col-span-5">
@@ -194,7 +194,7 @@ export function AboutPage() {
       </section>
 
       {/* Leadership — designed as an intentional publication status, not a placeholder grid */}
-      <section className="bg-ivory py-20 lg:py-28">
+      <section className="bg-ivory section-space">
         <div className="shell">
           <div className="grid gap-10 border border-charcoal/20 lg:grid-cols-12">
             <div className="flex items-center justify-center border-b border-charcoal/15 bg-paper p-10 lg:col-span-5 lg:border-b-0 lg:border-r">
@@ -225,7 +225,7 @@ export function AboutPage() {
       </section>
 
       {/* Commitment note */}
-      <section className="border-t border-charcoal/10 bg-paper py-16 lg:py-20">
+      <section className="border-t border-charcoal/10 bg-paper section-space">
         <div className="shell">
           <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
             <div className="lg:col-span-7">
@@ -257,6 +257,7 @@ export function AboutPage() {
       </section>
 
       <CTASection
+        compact
         eyebrow="Our commitment"
         headline="Want to know if EcoHealth is the right partner for your project?"
         headlineLines={['Want to know if', 'EcoHealth is the right', 'partner for your project?']}

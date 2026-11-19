@@ -5,7 +5,13 @@ import { ArtImage, LineReveal, SectionMarker } from '@/components/motion';
 
 type HeroVariant = 'masthead' | 'split' | 'cinematic';
 
-function Breadcrumb({ breadcrumb, tone }: { breadcrumb?: { label: string; path?: string }[]; tone: 'dark' | 'light' }) {
+export function Breadcrumb({
+  breadcrumb,
+  tone,
+}: {
+  breadcrumb?: { label: string; path?: string }[];
+  tone: 'dark' | 'light';
+}) {
   if (!breadcrumb) return null;
   return (
     <nav
@@ -257,7 +263,7 @@ export function ServiceCTA({
   return (
     <section className="bg-forest-900 text-ivory">
       <div className="shell">
-        <div className="grid items-end gap-10 py-20 lg:grid-cols-12 lg:py-28">
+        <div className="grid items-end gap-10 section-space lg:grid-cols-12">
           <div className="lg:col-span-8">
             <SectionMarker label="Next step" tone="light" index="—" />
             <h2 className="mt-6 max-w-3xl font-display text-display-md text-ivory">{title}</h2>

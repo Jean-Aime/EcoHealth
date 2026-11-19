@@ -4,12 +4,16 @@ import { company, footerNav } from '@/data/content';
 import { useSiteSettings } from '@/lib/cms';
 import { Logo } from '@/components/Logo';
 
-export function Footer() {
+export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: boolean }) {
   const settings = useSiteSettings();
   const hasContact = Boolean(settings.email || settings.phone || settings.address);
 
   return (
-    <footer className="relative overflow-hidden bg-forest-950 text-ivory">
+    <footer
+      className={`relative z-20 overflow-hidden bg-forest-950 text-ivory ${
+        overlapsPinnedCta ? '-mt-[100svh]' : ''
+      }`}
+    >
       <div className="pointer-events-none absolute inset-0 opacity-[0.05]" aria-hidden="true">
         <div className="h-full w-full hairline-grid" />
       </div>

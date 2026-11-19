@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Printer, ShieldCheck, ShieldX } from 'lucide-react';
 import { navigate } from '@/lib/router';
 import { SEO } from '@/components/SEO';
+import { Breadcrumb } from '@/components/PageHero';
 import { verifyTrainingCertificate, type VerifiedTrainingCertificate } from '@/lib/training';
 
 function formatDate(value: string) {
@@ -67,7 +68,15 @@ export function CertificateVerificationPage({ code }: { code: string }) {
       />
       <main className="min-h-[70svh] bg-ivory pb-20 pt-36 lg:pb-28 lg:pt-44">
         <div className="shell max-w-4xl">
-          <p className="eyebrow">Certificate verification</p>
+          <Breadcrumb
+            breadcrumb={[
+              { label: 'Home', path: '/' },
+              { label: 'Training', path: '/training' },
+              { label: 'Certificate verification' },
+            ]}
+            tone="dark"
+          />
+          <p className="eyebrow mt-10">Certificate verification</p>
           <h1 className="mt-4 font-display text-display-lg text-charcoal">Check this training record.</h1>
           <form onSubmit={handleSubmit} className="mt-8 flex flex-col gap-3 border border-charcoal/15 bg-paper p-5 sm:flex-row">
             <label className="flex-1 text-xs font-medium uppercase tracking-widest text-charcoal-light">

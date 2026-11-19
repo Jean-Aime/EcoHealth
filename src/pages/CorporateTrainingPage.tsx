@@ -80,7 +80,7 @@ export function CorporateTrainingPage() {
         meta={['Organisation request', 'Preferred dates', 'Scoped response']}
       />
 
-      <section className="bg-ivory py-16 lg:py-24">
+      <section className="bg-ivory section-space">
         <div className="shell grid gap-12 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-4">
             <p className="eyebrow">Training requirements</p>

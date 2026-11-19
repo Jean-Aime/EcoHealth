@@ -56,7 +56,7 @@ export function InsightsPage() {
       />
 
       {showFeatured && featured && (
-        <section className="bg-ivory py-16 lg:py-24">
+        <section className="bg-ivory section-space">
           <div className="shell">
             <Reveal>
               <Link to={`/insights/${featured.slug}`} className="group grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -98,7 +98,7 @@ export function InsightsPage() {
         </section>
       )}
 
-      <section className="border-t border-charcoal/10 bg-paper py-16 lg:py-24">
+      <section className="border-t border-charcoal/10 bg-paper section-space">
         <div className="shell">
           <Reveal>
             <div className="flex flex-col gap-6 border-b border-charcoal/20 pb-6 lg:flex-row lg:items-end lg:justify-between">
@@ -185,6 +185,7 @@ export function InsightsPage() {
       </section>
 
       <CTASection
+        compact
         eyebrow="Get in touch"
         headline="Have a question about safety, environment, or operations?"
         headlineLines={['Have a question about', 'safety, environment,', 'or operations?']}
@@ -364,7 +365,7 @@ export function ArticlePage({ slug }: { slug: string }) {
       </article>
 
       {related.length > 0 && (
-        <section className="border-t border-charcoal/10 bg-paper py-16 lg:py-20">
+        <section className="border-t border-charcoal/10 bg-paper section-space">
           <div className="shell">
             <SectionMarker index="—" label="Keep reading" />
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:gap-12">
