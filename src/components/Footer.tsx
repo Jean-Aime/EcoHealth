@@ -4,15 +4,11 @@ import { company, footerNav } from '@/data/content';
 import { useSiteSettings } from '@/lib/cms';
 import { BrandLogo } from '@/components/Logo';
 
-export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: boolean }) {
+export function Footer() {
   const settings = useSiteSettings();
 
   return (
-    <footer
-      className={`relative z-20 overflow-hidden bg-forest-950 text-ivory ${
-        overlapsPinnedCta ? '-mt-[100svh]' : ''
-      }`}
-    >
+    <footer className="relative z-20 overflow-hidden bg-forest-950 text-ivory">
       <div className="pointer-events-none absolute inset-0 opacity-[0.05]" aria-hidden="true">
         <div className="h-full w-full hairline-grid" />
       </div>

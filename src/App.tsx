@@ -100,7 +100,7 @@ function App() {
       <main id="main" tabIndex={-1} key={path} className="animate-page-in">
         {page}
       </main>
-      <Footer overlapsPinnedCta={path === '/'} />
+      <Footer />
     </div>
   );
 }
