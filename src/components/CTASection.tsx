@@ -40,7 +40,7 @@ export function CTASection({
 
   const section = (
     <section
-      className={`relative isolate overflow-hidden ${pinned ? 'sticky top-0 z-10 h-[100svh]' : ''} ${bg} ${
+      className={`relative isolate overflow-hidden ${pinned ? 'sticky top-0 z-10 h-[90svh] lg:h-[84svh]' : ''} ${bg} ${
         dark ? 'text-ivory' : 'text-charcoal'
       }`}
     >
@@ -72,7 +72,9 @@ export function CTASection({
 
       <div className={`shell relative z-10 ${pinned ? 'flex h-full items-center' : ''}`}>
         <div
-          className={`grid gap-12 ${compact ? 'section-space' : 'py-24 lg:py-32'} lg:grid-cols-12 lg:items-end`}
+          className={`grid gap-12 ${
+            pinned ? 'py-6 sm:py-8 lg:py-10' : compact ? 'section-space' : 'py-24 lg:py-32'
+          } lg:grid-cols-12 lg:items-end`}
         >
           <div className="lg:col-span-8">
             <SectionMarker label={eyebrow ?? 'Start a conversation'} tone={dark ? 'light' : 'dark'} index="—" />
@@ -112,5 +114,5 @@ export function CTASection({
     </section>
   );
 
-  return pinned ? <div className="relative h-[200svh]">{section}</div> : section;
+  return pinned ? <div className="relative h-[160svh] lg:h-[145svh]">{section}</div> : section;
 }
