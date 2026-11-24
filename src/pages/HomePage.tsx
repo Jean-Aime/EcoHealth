@@ -104,7 +104,6 @@ export function HomePage() {
         secondaryTo="/services"
         secondaryLabel="Explore our services"
         compact
-        pinned
       />
     </>
   );

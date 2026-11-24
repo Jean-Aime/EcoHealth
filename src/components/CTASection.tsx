@@ -19,7 +19,6 @@ export function CTASection({
   secondaryTo,
   secondaryLabel,
   compact = false,
-  pinned = false,
 }: {
   eyebrow?: string;
   headline: string;
@@ -33,16 +32,14 @@ export function CTASection({
   secondaryTo?: string;
   secondaryLabel?: string;
   compact?: boolean;
-  pinned?: boolean;
 }) {
   const dark = variant !== 'light';
   const bg = dark ? (variant === 'forest' ? 'bg-forest-900' : 'bg-charcoal') : 'bg-ivory';
+  const compactImage = compact && Boolean(image);
 
   const section = (
     <section
-      className={`relative isolate overflow-hidden ${
-        pinned ? 'sticky top-0 z-10 h-[84svh] sm:h-[80svh] lg:h-[76svh]' : ''
-      } ${bg} ${
+      className={`relative isolate overflow-hidden ${compactImage ? 'min-h-[68svh]' : ''} ${bg} ${
         dark ? 'text-ivory' : 'text-charcoal'
       }`}
     >
@@ -54,7 +51,7 @@ export function CTASection({
             sizes="100vw"
             width={1920}
             height={1080}
-            parallax={pinned ? 0 : 30}
+            parallax={compactImage ? 0 : 30}
             className="absolute inset-0 h-full w-full"
           />
           <div className="absolute inset-0 bg-gradient-to-r from-forest-950 via-forest-950/85 to-forest-950/35" />
@@ -72,10 +69,10 @@ export function CTASection({
         </div>
       )}
 
-      <div className={`shell relative z-10 ${pinned ? 'flex h-full items-center' : ''}`}>
+      <div className={`shell relative z-10 ${compactImage ? 'flex min-h-[68svh] items-center' : ''}`}>
         <div
           className={`grid gap-12 ${
-            pinned ? 'py-4 sm:py-6 lg:py-8' : compact ? 'section-space' : 'py-24 lg:py-32'
+            compactImage ? 'py-6 sm:py-8 lg:py-10' : compact ? 'section-space' : 'py-24 lg:py-32'
           } lg:grid-cols-12 lg:items-end`}
         >
           <div className="lg:col-span-8">
@@ -116,5 +113,5 @@ export function CTASection({
     </section>
   );
 
-  return pinned ? <div className="relative h-[145svh] sm:h-[135svh] lg:h-[128svh]">{section}</div> : section;
+  return section;
 }
