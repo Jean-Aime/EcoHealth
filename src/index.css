@@ -275,6 +275,16 @@
   .scroll-cue {
     animation: scrollCue 2.6s cubic-bezier(0.45, 0, 0.55, 1) infinite;
   }
+
+  .footer-marquee-track {
+    animation: footerMarquee 60s linear infinite;
+  }
+}
+
+@keyframes footerMarquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -305,5 +315,9 @@
   }
   .art-image__inner img {
     transform: none !important;
+  }
+  .footer-marquee-track {
+    animation: none;
+    transform: none;
   }
 }

@@ -91,17 +91,20 @@ export function Footer() {
             </Link>
             <span className="text-ivory/20">|</span>
             <span>Rwanda</span>
-            <span className="text-ivory/20">|</span>
-            <Link to="/admin" className="link-underline hover:text-ivory">
-              Staff login
-            </Link>
           </div>
         </div>
 
         <div className="select-none overflow-hidden pb-6" aria-hidden="true">
-          <p className="whitespace-nowrap font-display text-[clamp(3.5rem,14vw,12rem)] font-light leading-[0.75] tracking-[-0.05em] text-white/[0.06]">
-            EcoHealth
-          </p>
+          <div className="footer-marquee-track flex w-max">
+            {[0, 1].map((copy) => (
+              <p
+                key={copy}
+                className="mr-10 shrink-0 whitespace-nowrap font-display text-[clamp(3.5rem,14vw,12rem)] font-light leading-[0.75] tracking-[-0.05em] text-white/[0.06]"
+              >
+                EcoHealth &amp; Transport Solutions Ltd
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
