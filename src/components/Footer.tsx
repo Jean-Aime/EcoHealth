@@ -1,12 +1,11 @@
 import { Link } from '@/lib/router';
-import { ArrowRight, Download, Linkedin, Mail, MapPin, Phone } from 'lucide-react';
+import { ArrowRight, Linkedin } from 'lucide-react';
 import { company, footerNav } from '@/data/content';
 import { useSiteSettings } from '@/lib/cms';
 import { BrandLogo } from '@/components/Logo';
 
 export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: boolean }) {
   const settings = useSiteSettings();
-  const hasContact = Boolean(settings.email || settings.phone || settings.address);
 
   return (
     <footer
@@ -59,7 +58,7 @@ export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: bool
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <h2 className="text-[9.5px] font-semibold uppercase tracking-editorial text-sage-dark">Services</h2>
             <ul className="mt-5 space-y-3">
               {footerNav[1].links.map((link) => (
@@ -70,58 +69,6 @@ export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: bool
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div className="lg:col-span-2">
-            <h2 className="text-[9.5px] font-semibold uppercase tracking-editorial text-sage-dark">Contact</h2>
-            <ul className="mt-5 space-y-4 text-sm text-ivory/60">
-              {settings.email && (
-                <li className="flex items-start gap-2.5">
-                  <Mail className="mt-0.5 h-3.5 w-3.5 shrink-0 text-forest-400" />
-                  <a href={`mailto:${settings.email}`} className="break-all link-underline hover:text-ivory">
-                    {settings.email}
-                  </a>
-                </li>
-              )}
-              {settings.phone && (
-                <li className="flex items-start gap-2.5">
-                  <Phone className="mt-0.5 h-3.5 w-3.5 shrink-0 text-forest-400" />
-                  <a href={`tel:${settings.phone.replace(/\s+/g, '')}`} className="link-underline hover:text-ivory">
-                    {settings.phone}
-                  </a>
-                </li>
-              )}
-              <li className="flex items-start gap-2.5">
-                <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-forest-400" />
-                <span>{settings.address || 'Rwanda, serving projects regionally'}</span>
-              </li>
-            </ul>
-
-            {settings.companyProfileUrl ? (
-              <a
-                href={settings.companyProfileUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 border border-white/20 px-4 py-2.5 text-[9.5px] font-semibold uppercase tracking-[0.16em] text-ivory transition-colors hover:border-ivory hover:bg-ivory hover:text-forest-950"
-              >
-                <Download className="h-3.5 w-3.5" />
-                {settings.companyProfileLabel || 'Company profile'}
-              </a>
-            ) : (
-              <Link
-                to="/partners"
-                className="mt-6 inline-flex items-center gap-2 text-[9.5px] font-semibold uppercase tracking-[0.16em] text-sage-light transition-colors hover:text-ivory"
-              >
-                <span className="link-underline">Request company profile</span>
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            )}
-
-            {!hasContact && (
-              <p className="mt-5 text-xs leading-relaxed text-ivory/40">
-                All enquiries are handled through the request form and answered directly by our team.
-              </p>
-            )}
           </div>
         </div>
 
