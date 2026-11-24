@@ -3,9 +3,8 @@ import { useEffect, useState } from 'react';
 /**
  * Image delivery helpers.
  *
- * Photography is served from a remote CDN that accepts a `w` parameter, so the
- * site can request a right-sized file per breakpoint instead of a single large
- * JPEG. Any non-CDN URL is passed through untouched.
+ * CMS-managed photography may come from a remote CDN that accepts a `w`
+ * parameter. Local assets and other URLs are passed through untouched.
  */
 
 const DEFAULT_WIDTHS = [480, 768, 1080, 1440, 1920];

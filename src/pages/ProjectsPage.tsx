@@ -3,12 +3,12 @@ import { Link } from '@/lib/router';
 import { Reveal } from '@/components/Reveal';
 import { PageHero, ServiceCTA } from '@/components/PageHero';
 import { SEO } from '@/components/SEO';
-import { services, servicePaths } from '@/data/content';
+import { primaryServices, servicePaths, siteImages } from '@/data/content';
 import { usePublishedContent, type CaseStudyRecord } from '@/lib/cms';
 import { ArtImage, ArrowLink, SectionMarker } from '@/components/motion';
 
-const heroImage = 'https://images.pexels.com/photos/14053428/pexels-photo-14053428.jpeg?auto=compress&cs=tinysrgb&w=1800';
-const fieldImage = 'https://images.pexels.com/photos/10365944/pexels-photo-10365944.jpeg?auto=compress&cs=tinysrgb&w=1400';
+const heroImage = siteImages.constructionTeam;
+const fieldImage = siteImages.siteTeam;
 
 const capabilityAreas = [
   {
@@ -16,24 +16,20 @@ const capabilityAreas = [
     body: 'Site safety inspections, risk assessments, compliance auditing, and embedded safety supervision for active projects.',
   },
   {
-    title: 'Environmental management',
-    body: 'Environmental screening, management plans, monitoring, and reporting; formal assessments or approvals are coordinated with authorised specialists where required.',
+    title: 'Transport and logistics',
+    body: 'Transport risk assessment, journey planning, driver safety awareness, and fleet procedures scoped to project needs.',
   },
   {
-    title: 'Technical field support',
-    body: 'Deployment, inspection, and safety supervision for telecommunications and infrastructure field work.',
+    title: 'PPE supply',
+    body: 'Personal protective equipment options with product specifications, availability, and delivery confirmed for each quotation.',
   },
   {
-    title: 'Transport & fleet safety',
-    body: 'Fleet safety policies, driver training, journey management, and transport risk assessment.',
+    title: 'Rigging and lifting services',
+    body: 'Project-scoped planning and site support with equipment, competent personnel, and authorisations confirmed before work is agreed.',
   },
   {
-    title: 'Waste & e-waste solutions',
-    body: 'Waste management planning, e-waste responsible disposal, and segregation guidance for sites and facilities.',
-  },
-  {
-    title: 'Documentation & reporting',
-    body: 'Clear, traceable records that support compliance, tender responses, and continuous improvement.',
+    title: 'Professional safety training',
+    body: 'Workplace safety training shaped around participant roles, site hazards, and agreed learning objectives.',
   },
 ];
 
@@ -44,17 +40,17 @@ export function ProjectsPage() {
     <>
       <SEO
         title="Projects & Experience | EcoHealth & Transport Solutions Ltd"
-        description="Explore EcoHealth's capabilities across EHS, environmental management, training, telecommunications field support, transport safety, and waste management."
+        description="Explore EcoHealth's EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional safety training."
         path="/projects"
       />
 
       <PageHero
         eyebrow="Projects & experience"
-        title="A clear view of our service capabilities."
-        titleLines={['A clear view of', 'our service', 'capabilities.']}
-        subtitle="Our service scope covers EHS consultancy, environmental management, training, technical field support, transport safety, and waste solutions. Approved case studies appear here once verified for publication."
+        title="Practical support for safer project delivery."
+        titleLines={['Practical support', 'for safer project', 'delivery.']}
+        subtitle="Explore our EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional safety training. Approved case studies appear here once verified for publication."
         image={heroImage}
-        imageAlt="Workers in safety vests operating machinery at a night construction site"
+        imageAlt="Project team wearing safety equipment at a construction site"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Projects' }]}
         index="04"
         meta={['EHS', 'Environment', 'Field support', 'Transport', 'Waste']}
@@ -76,7 +72,7 @@ export function ProjectsPage() {
                     integrated programme support.
                   </p>
                   <div className="mt-8">
-                    <ArrowLink to="/services">See the six service lines</ArrowLink>
+                    <ArrowLink to="/services">See our five core services</ArrowLink>
                   </div>
                 </div>
               </Reveal>
@@ -136,7 +132,7 @@ export function ProjectsPage() {
             <div className="relative min-h-[24rem] lg:col-span-5 lg:min-h-[40rem]">
               <ArtImage
                 src={fieldImage}
-                alt="Workers in high-visibility vests walking through a forested landscape"
+                alt="Field team wearing high-visibility clothing at a project site"
                 sizes="(min-width: 1024px) 42vw, 100vw"
                 width={1200}
                 height={1500}
@@ -199,7 +195,7 @@ export function ProjectsPage() {
           </div>
 
           <div className="mt-8 grid border-t border-charcoal/15 sm:grid-cols-2 lg:grid-cols-3">
-            {services.map((service) => (
+            {primaryServices.map((service) => (
               <Reveal key={service.slug}>
                 <Link
                   to={servicePaths[service.slug]}

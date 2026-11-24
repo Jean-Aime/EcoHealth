@@ -20,45 +20,45 @@ import { CTASection } from '@/components/CTASection';
 import { SEO } from '@/components/SEO';
 import { SmartImage } from '@/components/SmartImage';
 import { ArtImage, ArrowLink, LineReveal, SectionMarker } from '@/components/motion';
-import { company, services, servicePaths } from '@/data/content';
+import { company, primaryServices, servicePaths, siteImages } from '@/data/content';
 import { usePublishedContent, useSiteSettings } from '@/lib/cms';
 import { organizationJsonLd } from '@/lib/site';
 
-const heroImage = 'https://images.pexels.com/photos/35861510/pexels-photo-35861510.jpeg?auto=compress&cs=tinysrgb&w=1800';
-const introImage = 'https://images.pexels.com/photos/31835038/pexels-photo-31835038.jpeg?auto=compress&cs=tinysrgb&w=1400';
-const trainingImage = 'https://images.pexels.com/photos/8761547/pexels-photo-8761547.jpeg?auto=compress&cs=tinysrgb&w=1400';
-const capabilityImage = 'https://images.pexels.com/photos/14053428/pexels-photo-14053428.jpeg?auto=compress&cs=tinysrgb&w=1600';
-const closingImage = 'https://images.pexels.com/photos/8487361/pexels-photo-8487361.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const heroImage = siteImages.siteTeam;
+const introImage = siteImages.brandedHelmet;
+const trainingImage = siteImages.safetyTraining;
+const capabilityImage = siteImages.fieldDiscussion;
+const closingImage = siteImages.fieldCrew;
 
 const capabilities = [
   {
     title: 'Integrated service lines',
-    body: 'EHS, environmental, training, telecom field, transport, and waste, coordinated through one accountable partner.',
+    body: 'EHS consultancy, transport and logistics, PPE supply, rigging and lifting, and professional safety training.',
     image: capabilityImage,
-    imageAlt: 'Workers in safety vests operating machinery on a construction site at night',
+    imageAlt: 'Field team members discussing work at an active project site',
   },
   {
     title: 'Field-oriented delivery',
     body: 'Our work happens on site and in the room, not only in documents. We engage with the real conditions of each project.',
-    image: services[3].image,
-    imageAlt: services[3].imageAlt,
+    image: primaryServices[1].image,
+    imageAlt: primaryServices[1].imageAlt,
   },
   {
     title: 'Risk-based methodology',
     body: 'We focus attention and resources on the risks that actually matter, rather than spreading effort evenly across everything.',
-    image: services[0].image,
-    imageAlt: services[0].imageAlt,
+    image: primaryServices[0].image,
+    imageAlt: primaryServices[0].imageAlt,
   },
   {
     title: 'Documentation that holds up',
     body: 'Clear, traceable records built to support compliance, tenders, and continuous improvement. They are useful, not decorative.',
-    image: services[2].image,
-    imageAlt: services[2].imageAlt,
+    image: primaryServices[4].image,
+    imageAlt: primaryServices[4].imageAlt,
   },
 ];
 
 const partnershipPoints = [
-  { title: 'Subcontracting', body: 'Safety supervision, environmental management, field support, and training delivered as part of your project team.' },
+  { title: 'Subcontracting', body: 'EHS, transport and logistics, PPE, lifting, and training scopes delivered as part of your project team.' },
   { title: 'Procurement readiness', body: 'Clear scopes, documented deliverables, and credentials aligned to client requirements.' },
   { title: 'Local presence', body: 'Based in Rwanda; regional engagements are considered individually against scope and capacity.' },
   { title: 'Specialist scopes', body: 'Engaged for specific disciplines or embedded across a programme, with scope scaled to project needs.' },
@@ -76,8 +76,8 @@ export function HomePage() {
   return (
     <>
       <SEO
-        title="EcoHealth & Transport Solutions Ltd | EHS, Environmental & Transport Consultancy, Rwanda"
-        description="Practical EHS consultancy, environmental management, workforce training, technical field support, and transport safety solutions for businesses and projects in Rwanda."
+        title="EcoHealth & Transport Solutions Ltd | EHS, Logistics, PPE, Rigging & Safety Training, Rwanda"
+        description="EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional safety training for projects in Rwanda."
         path="/"
         jsonLd={jsonLd}
       />
@@ -100,7 +100,7 @@ export function HomePage() {
         ctaTo="/contact"
         variant="forest"
         image={closingImage}
-        imageAlt="Two engineers in protective equipment discussing a project inside a building under construction"
+        imageAlt="Field crew wearing high-visibility safety equipment at a project site"
         secondaryTo="/services"
         secondaryLabel="Explore our services"
         compact
@@ -117,7 +117,7 @@ function Hero() {
     <section className="relative isolate min-h-[100svh] overflow-hidden bg-forest-950 text-ivory">
       <ArtImage
         src={heroImage}
-        alt="Workers in high-visibility clothing beside water infrastructure on an overcast day"
+        alt="Field team wearing high-visibility clothing at a project site"
         priority
         parallax={12}
         sizes="100vw"
@@ -134,7 +134,7 @@ function Hero() {
           <Reveal>
             <p className="flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[0.18em] text-ivory/75">
               <span className="h-1.5 w-1.5 rounded-full bg-sage-dark" aria-hidden="true" />
-              Rwanda-based EHS, environmental &amp; transport consultancy
+              Rwanda-based EHS, transport and logistics, and safety services
             </p>
           </Reveal>
 
@@ -187,7 +187,7 @@ function CompanyIntro() {
                 About EcoHealth
               </span>
               <h2 className="mt-6 max-w-2xl font-display text-display-lg text-charcoal">
-                <LineReveal lines={['Where operational safety', 'meets environmental', 'responsibility.']} />
+                <LineReveal lines={['Practical safety expertise', 'and support for', 'every worksite.']} />
               </h2>
               <div className="mt-6 max-w-xl space-y-4 text-sm leading-relaxed text-muted sm:text-base">
                 {company.intro.body.map((paragraph, index) => (
@@ -205,7 +205,7 @@ function CompanyIntro() {
             <div>
               <ArtImage
                 src={introImage}
-                alt="Aerial view of green hills and terraced farmland"
+                alt="EcoHealth branding on a safety helmet"
                 sizes="(min-width: 1024px) 48vw, 100vw"
                 width={1600}
                 height={1000}
@@ -280,7 +280,7 @@ function ServiceIndex() {
               What we do
             </div>
             <h2 className="mx-auto mt-5 max-w-3xl font-display text-display-lg text-charcoal">
-              Six disciplines. <span className="font-serif italic text-forest-700">One standard.</span>
+              Five services. <span className="font-serif italic text-forest-700">One standard.</span>
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted">
               Each service is delivered with the same practical, risk-based approach, adapted to your project, never
@@ -317,7 +317,7 @@ function ServiceIndex() {
             aria-label="EcoHealth services"
             className="mt-4 flex flex-nowrap snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
-            {services.map((service, index) => (
+            {primaryServices.map((service, index) => (
               <Reveal
                 key={service.slug}
                 delay={((index % 3) + 1) as 1 | 2 | 3}
@@ -389,8 +389,8 @@ function WhyEcoHealth() {
           <Reveal>
             <div className="relative aspect-[0.95] overflow-hidden rounded-[1.4rem] bg-forest-900">
               <ArtImage
-                src={services[0].image}
-                alt={services[0].imageAlt}
+                src={primaryServices[0].image}
+                alt={primaryServices[0].imageAlt}
                 sizes="(min-width: 1024px) 42vw, 100vw"
                 width={1200}
                 height={1400}
@@ -457,8 +457,9 @@ function CapabilityBand() {
             Clear service capabilities, scoped to each project.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted">
-            EcoHealth offers EHS, environmental, training, technical field, and transport safety services. Each
-            engagement is scoped to the project requirements, available resources, and any applicable authorisations.
+            EcoHealth offers EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, and
+            professional safety training. Each engagement is scoped to project requirements, available resources, and
+            applicable competence and authorisation requirements.
           </p>
         </Reveal>
 
@@ -608,7 +609,8 @@ function ProcurementSection() {
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-muted sm:text-base">
             We work with prime contractors, institutional clients, and organisations seeking a specialist partner for
-            safety, environmental, and field operations in Rwanda, from subcontracted scopes to full programme support.
+            EHS, transport and logistics, PPE, lifting, and training scopes in Rwanda, from subcontracted work to
+            programme support.
           </p>
         </Reveal>
 
@@ -772,10 +774,10 @@ function InsightsPreview() {
 
 function featuredImage(category: string): string {
   const map: Record<string, string> = {
-    'Risk Management': 'https://images.pexels.com/photos/9258892/pexels-photo-9258892.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    'Environmental Management': 'https://images.pexels.com/photos/28463991/pexels-photo-28463991.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    'Occupational Health & Safety': 'https://images.pexels.com/photos/8487773/pexels-photo-8487773.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    'Transport Safety': 'https://images.pexels.com/photos/1606957/pexels-photo-1606957.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    'Risk Management': siteImages.riskReporting,
+    'Environmental Management': siteImages.fieldCrew,
+    'Occupational Health & Safety': siteImages.siteSafety,
+    'Transport Safety': siteImages.transportSafety,
   };
   return map[category] ?? map['Risk Management'];
 }

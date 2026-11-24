@@ -11,7 +11,7 @@ import {
   type EnquiryErrors,
   type EnquiryValues,
 } from '@/lib/enquiryValidation';
-import { services } from '@/data/content';
+import { primaryServices } from '@/data/content';
 
 export type EnquiryVariant = 'quote' | 'training' | 'partnership';
 
@@ -41,8 +41,7 @@ const VARIANTS: Record<EnquiryVariant, VariantConfig> = {
     successBody:
       'A member of the EcoHealth team will review your requirements and respond using your preferred contact method.',
     options: [
-      ...services.map((service) => service.title),
-      'Training enquiry',
+      ...primaryServices.map((service) => service.title),
       'Partnership or procurement',
       'Not sure yet',
     ],

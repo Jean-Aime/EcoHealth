@@ -6,11 +6,11 @@ import { EnquiryForm, type EnquiryVariant } from '@/components/EnquiryForm';
 import { SEO } from '@/components/SEO';
 import { Link, useRouter } from '@/lib/router';
 import { useSiteSettings } from '@/lib/cms';
-import { services } from '@/data/content';
+import { primaryServices, siteImages } from '@/data/content';
 import { organizationJsonLd } from '@/lib/site';
 import { SectionMarker } from '@/components/motion';
 
-const heroImage = 'https://images.pexels.com/photos/10363550/pexels-photo-10363550.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const heroImage = siteImages.fieldCrew;
 
 const TABS: { id: EnquiryVariant; label: string }[] = [
   { id: 'quote', label: 'Request a quote' },
@@ -30,7 +30,7 @@ export function ContactPage() {
   const requestedVariant = parseVariant(query.get('enquiry'));
   const serviceSlug = query.get('service');
   const course = query.get('course');
-  const serviceTitle = services.find((service) => service.slug === serviceSlug)?.title;
+  const serviceTitle = primaryServices.find((service) => service.slug === serviceSlug)?.title;
 
   useEffect(() => {
     setVariant(requestedVariant);
@@ -49,7 +49,7 @@ export function ContactPage() {
     <>
       <SEO
         title="Request a Quote | EcoHealth & Transport Solutions Ltd"
-        description="Request a quote for EHS consultancy, environmental management, training, telecommunications field support, transport safety, or waste management in Rwanda."
+        description="Contact EcoHealth about EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, or professional safety training in Rwanda."
         path="/contact"
         jsonLd={jsonLd}
       />
@@ -60,10 +60,10 @@ export function ContactPage() {
         titleLines={['Tell us about', 'your project.']}
         subtitle="Share your operational needs, project requirements, or training objectives. Our team will discuss an appropriate scope of support."
         image={heroImage}
-        imageAlt="Two workers in safety equipment discussing work in the field"
-        breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Contact' }]}
-        index="07"
-        meta={['Quote', 'Training', 'Partnership']}
+        imageAlt="Field team wearing high-visibility clothing at a project site"
+        breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Contact Us' }]}
+        index="06"
+        meta={['EHS', 'Logistics', 'PPE · Lifting', 'Safety training']}
       />
 
       <section className="bg-ivory section-space">

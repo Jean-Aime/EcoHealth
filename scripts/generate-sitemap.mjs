@@ -31,7 +31,7 @@ async function loadContent() {
   return import(dataUrl);
 }
 
-const { articles, services } = await loadContent();
+const { articles, primaryServices } = await loadContent();
 
 function readEnvFile(path) {
   if (!existsSync(path)) return {};
@@ -87,7 +87,7 @@ add('/partners', { priority: '0.8' });
 add('/contact', { priority: '0.9' });
 add('/privacy', { priority: '0.3', changefreq: 'yearly' });
 
-for (const service of services) {
+for (const service of primaryServices) {
   add(`/services/${service.slug}`, { priority: '0.9' });
 }
 
@@ -133,5 +133,5 @@ writeFileSync(resolve(publicDir, 'sitemap.xml'), sitemap, 'utf8');
 writeFileSync(resolve(publicDir, 'robots.txt'), robots, 'utf8');
 
 console.log(
-  `Sitemap: ${entries.size} URLs written for ${siteUrl} (${articleSlugs.size} articles, ${services.length} services).`,
+  `Sitemap: ${entries.size} URLs written for ${siteUrl} (${articleSlugs.size} articles, ${primaryServices.length} services).`,
 );

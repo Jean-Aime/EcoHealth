@@ -4,11 +4,10 @@ import { Reveal } from '@/components/Reveal';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { SEO } from '@/components/SEO';
-import { services, servicePaths } from '@/data/content';
+import { primaryServices, servicePaths, siteImages } from '@/data/content';
 import { ArtImage, ArrowLink, SectionMarker } from '@/components/motion';
 
-const heroImage =
-  'https://images.pexels.com/photos/35861510/pexels-photo-35861510.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const heroImage = siteImages.siteSafety;
 
 const deliveryModel = [
   {
@@ -29,20 +28,20 @@ export function ServicesPage() {
   return (
     <>
       <SEO
-        title="Services | EHS, Environmental, Training, Telecom, Transport & Waste | EcoHealth"
-        description="Explore EcoHealth's six service lines: EHS consultancy, environmental management, training, telecommunications field support, transport safety, and waste management."
+        title="Services | EHS, Transport, PPE, Rigging & Training | EcoHealth"
+        description="Explore EcoHealth's five services: EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional safety training."
         path="/services"
       />
       <PageHero
         eyebrow="Our services"
-        title="Six disciplines. One standard of delivery."
-        titleLines={['Six disciplines.', 'One standard', 'of delivery.']}
-        subtitle="Each service is delivered with the same practical, risk-based approach, tailored to your project, documented for compliance, and focused on real outcomes."
+        title="Five services. One standard of delivery."
+        titleLines={['Five services.', 'One standard', 'of delivery.']}
+        subtitle="From EHS consultancy to PPE, lifting, logistics, and training, each service is scoped to your project requirements and delivered with a practical focus."
         image={heroImage}
-        imageAlt="Two construction workers in safety equipment beside a waterfront on an overcast day"
+        imageAlt="Field team wearing safety equipment during site work"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Services' }]}
         index="02"
-        meta={['EHS', 'Environment', 'Training', 'Field support', 'Transport', 'Waste']}
+        meta={['EHS', 'Transport & logistics', 'PPE', 'Rigging & lifting', 'Safety training']}
       />
 
       <section className="bg-ivory section-space">
@@ -50,12 +49,12 @@ export function ServicesPage() {
           <div className="flex flex-col justify-between gap-4 border-t border-charcoal/15 pt-6 sm:flex-row sm:items-center">
             <p className="text-[9.5px] font-semibold uppercase tracking-[0.2em] text-muted">Service index</p>
             <p className="text-[9.5px] font-semibold uppercase tracking-[0.2em] text-muted">
-              01 — 06 · Rwanda · regional work scoped individually
+              01 — 05 · Rwanda · regional work scoped individually
             </p>
           </div>
 
           <div>
-            {services.map((service, index) => {
+            {primaryServices.map((service, index) => {
               const reversed = index % 2 === 1;
               return (
                 <article

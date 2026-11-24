@@ -12,11 +12,13 @@ interface BrandLogoProps {
 
 export function BrandLogo({ alt, onDarkBackground = false, className = '' }: BrandLogoProps) {
   return (
-    <img
-      src="/logp.png"
-      alt={alt}
-      className={`block w-auto object-contain ${className} ${onDarkBackground ? 'brightness-0 invert' : ''}`}
-    />
+    <span
+      className={`inline-flex shrink-0 items-center justify-center rounded-sm bg-white p-1 ${
+        onDarkBackground ? 'shadow-sm' : 'ring-1 ring-charcoal/10'
+      }`}
+    >
+      <img src="/logp.png" alt={alt} className={`block w-auto object-contain ${className}`} />
+    </span>
   );
 }
 

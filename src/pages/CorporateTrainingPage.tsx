@@ -5,6 +5,7 @@ import { PageHero } from '@/components/PageHero';
 import { SEO } from '@/components/SEO';
 import { Notice } from '@/components/admin/AdminUI';
 import { submitCorporateTrainingRequest } from '@/lib/training';
+import { siteImages } from '@/data/content';
 
 const fieldClass =
   'mt-2 w-full border border-charcoal/20 bg-white px-3 py-3 text-sm text-charcoal focus:border-forest-600 focus:outline-none';
@@ -69,8 +70,8 @@ export function CorporateTrainingPage() {
         title="Build a programme around your team's work."
         titleLines={['Build a programme', 'around your team’s', 'work.']}
         subtitle="Share your training requirements and preferred arrangements. EcoHealth staff will review the request and follow up on scope, availability and pricing."
-        image="https://images.pexels.com/photos/8761547/pexels-photo-8761547.jpeg?auto=compress&cs=tinysrgb&w=1400"
-        imageAlt="Professionals attending a training session"
+        image={siteImages.safetyTraining}
+        imageAlt="Lifting and rigging safety training graphic"
         breadcrumb={[
           { label: 'Home', path: '/' },
           { label: 'Training', path: '/training' },

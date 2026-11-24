@@ -3,8 +3,9 @@ import { Reveal } from '@/components/Reveal';
 import { PageHero } from '@/components/PageHero';
 import { SEO } from '@/components/SEO';
 import { SectionMarker } from '@/components/motion';
+import { siteImages } from '@/data/content';
 
-const heroImage = 'https://images.pexels.com/photos/8487773/pexels-photo-8487773.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const heroImage = siteImages.brandedHelmet;
 
 const sections = [
   {
@@ -59,7 +60,7 @@ export function PrivacyPage() {
         titleLines={['How we handle', 'the information you share.']}
         subtitle="A summary of how EcoHealth & Transport Solutions Ltd collects, uses, and protects information shared through this website and its training services."
         image={heroImage}
-        imageAlt="Professionals reviewing documents on site"
+        imageAlt="EcoHealth branding on a safety helmet"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Privacy policy' }]}
         index="08"
         meta={['Enquiries and training', 'No advertising profiles', 'Access restricted']}

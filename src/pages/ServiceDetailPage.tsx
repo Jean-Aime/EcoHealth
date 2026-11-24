@@ -3,7 +3,7 @@ import { Link } from '@/lib/router';
 import { Reveal } from '@/components/Reveal';
 import { PageHero, ServiceCTA } from '@/components/PageHero';
 import { SEO } from '@/components/SEO';
-import { services, servicePaths, type Service } from '@/data/content';
+import { primaryServiceSlugs, services, servicePaths, type Service } from '@/data/content';
 import { breadcrumbJsonLd, serviceJsonLd } from '@/lib/site';
 import { ArtImage, ArrowLink, SectionMarker } from '@/components/motion';
 
@@ -19,7 +19,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
             <p className="font-display text-[9rem] font-light leading-none text-white/10 sm:text-[14rem]">404</p>
             <h1 className="mt-4 font-display text-display-lg text-ivory">This service could not be found.</h1>
             <p className="mt-4 max-w-md text-base text-ivory/60">
-              The service you are looking for does not exist. Explore our six consultancy disciplines instead.
+              The service you are looking for does not exist. Browse our current services instead.
             </p>
             <Link to="/services" className="btn-solid-light mt-8">
               All services
@@ -41,6 +41,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
         title={`${service.title} | EcoHealth & Transport Solutions Ltd`}
         description={service.summary}
         path={`/services/${service.slug}`}
+        noIndex={!primaryServiceSlugs.includes(service.slug)}
         image={service.image}
         jsonLd={[
           serviceJsonLd(service),
@@ -223,7 +224,7 @@ export function ServiceDetailPage({ slug }: { slug: string }) {
             <Reveal>
               <SectionMarker index="05" label="Related services" />
             </Reveal>
-            <ArrowLink to="/services">All six disciplines</ArrowLink>
+            <ArrowLink to="/services">All five core services</ArrowLink>
           </div>
 
           <div className="mt-8 grid gap-6 sm:grid-cols-3">

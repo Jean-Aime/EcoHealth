@@ -8,8 +8,9 @@ import { SEO } from '@/components/SEO';
 import { ArtImage, SectionMarker } from '@/components/motion';
 import { fetchPublicTrainingCatalog, type TrainingCategory, type TrainingCourse } from '@/lib/training';
 import { formatDuration } from '@/lib/formatDuration';
+import { siteImages } from '@/data/content';
 
-const heroImage = 'https://images.pexels.com/photos/4872019/pexels-photo-4872019.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const heroImage = siteImages.safetyTraining;
 
 export function TrainingPage() {
   const [categories, setCategories] = useState<TrainingCategory[]>([]);
@@ -49,15 +50,15 @@ export function TrainingPage() {
   return (
     <>
       <SEO
-        title="Training & Capacity Building | EcoHealth & Transport Solutions Ltd"
+        title="Professional Safety Training | EcoHealth & Transport Solutions Ltd"
         description="Browse EcoHealth training course outlines, objectives, delivery formats and available sessions, or request corporate training."
         path="/training"
       />
 
       <PageHero
-        eyebrow="Training & capacity building"
-        title="Training shaped around the work people do."
-        titleLines={['Training shaped', 'around the work', 'people do.']}
+        eyebrow="Professional safety training"
+        title="Build safety capability through practical training."
+        titleLines={['Build safety', 'capability through', 'practical training.']}
         subtitle="Explore courses and upcoming sessions published by EcoHealth. Course details, availability and any applicable credentials are confirmed before registration."
         image={heroImage}
         imageAlt="Professionals taking part in a training session"
@@ -96,8 +97,8 @@ export function TrainingPage() {
               <Reveal delay={1}>
                 <div className="mt-10">
                   <ArtImage
-                    src="https://images.pexels.com/photos/8761547/pexels-photo-8761547.jpeg?auto=compress&cs=tinysrgb&w=1400"
-                    alt="Professionals attending a facilitated training session"
+                    src={siteImages.safetyTypes}
+                    alt="Types of workplace safety infographic"
                     sizes="(min-width: 1024px) 32vw, 100vw"
                     width={1000}
                     height={1200}

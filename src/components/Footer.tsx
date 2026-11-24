@@ -24,14 +24,14 @@ export function Footer({ overlapsPinnedCta = false }: { overlapsPinnedCta?: bool
             <BrandLogo
               alt="EcoHealth & Transport Solutions Ltd"
               onDarkBackground
-              className="h-16"
+              className="h-20 sm:h-24"
             />
             <p className="mt-8 max-w-sm font-serif text-2xl italic leading-snug text-sage-light lg:text-[1.75rem]">
               {company.tagline}
             </p>
             <p className="mt-6 max-w-sm text-sm leading-relaxed text-ivory/55">
-              EHS consultancy, environmental management, workforce training, technical field support, and transport
-              safety solutions for businesses and projects in {company.country}.
+              EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional
+              safety training for projects in {company.country}.
             </p>
             {settings.linkedinUrl && (
               <a

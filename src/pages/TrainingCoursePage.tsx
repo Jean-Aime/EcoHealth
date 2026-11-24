@@ -12,6 +12,7 @@ import {
 } from '@/lib/training';
 import { fetchCourseOutline, type CourseChapterOutline } from '@/lib/learning';
 import { formatDuration } from '@/lib/formatDuration';
+import { siteImages } from '@/data/content';
 
 function formatDate(value: string) {
   return new Date(value).toLocaleString('en-GB', {
@@ -86,8 +87,8 @@ export function TrainingCoursePage({ slug }: { slug: string }) {
         eyebrow={course.category?.name ?? 'Training'}
         title={course.title}
         subtitle={course.summary}
-        image="https://images.pexels.com/photos/4872019/pexels-photo-4872019.jpeg?auto=compress&cs=tinysrgb&w=1800"
-        imageAlt="Professionals taking part in a training session"
+        image={siteImages.safetyTraining}
+        imageAlt="Lifting and rigging safety training graphic"
         breadcrumb={[
           { label: 'Home', path: '/' },
           { label: 'Training', path: '/training' },

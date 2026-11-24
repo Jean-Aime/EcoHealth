@@ -9,16 +9,15 @@ import { SmartImage } from '@/components/SmartImage';
 import { usePublishedContent, type ArticleRecord } from '@/lib/cms';
 import { articleJsonLd, breadcrumbJsonLd } from '@/lib/site';
 import { ArtImage, ArrowLink, SectionMarker } from '@/components/motion';
+import { siteImages } from '@/data/content';
 
-const heroImage = 'https://images.pexels.com/photos/1181394/pexels-photo-1181394.jpeg?auto=compress&cs=tinysrgb&w=1800';
+const heroImage = siteImages.fieldDiscussion;
 
 const categoryImages: Record<string, string> = {
-  'Risk Management': 'https://images.pexels.com/photos/9258892/pexels-photo-9258892.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'Environmental Management':
-    'https://images.pexels.com/photos/28463991/pexels-photo-28463991.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'Occupational Health & Safety':
-    'https://images.pexels.com/photos/8487773/pexels-photo-8487773.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'Transport Safety': 'https://images.pexels.com/photos/1606957/pexels-photo-1606957.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'Risk Management': siteImages.riskReporting,
+  'Environmental Management': siteImages.fieldCrew,
+  'Occupational Health & Safety': siteImages.siteSafety,
+  'Transport Safety': siteImages.transportSafety,
 };
 
 function articleImage(article: ArticleRecord): string {

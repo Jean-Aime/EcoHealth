@@ -1,3 +1,17 @@
+export const siteImages = {
+  siteTeam: '/images/image14.jpeg',
+  fieldDiscussion: '/images/image15.jpeg',
+  fieldCrew: '/images/image16.jpeg',
+  siteSafety: '/images/image17.jpeg',
+  constructionTeam: '/images/image18.jpeg',
+  brandedHelmet: '/images/image13.jpeg',
+  safetyTraining: '/images/image6.jpeg',
+  safetyTypes: '/images/image2.jpeg',
+  ppeEquipment: '/images/image1.jpeg',
+  riskReporting: '/images/image5.jpeg',
+  transportSafety: '/images/image11.jpeg',
+} as const;
+
 export const company = {
   name: 'EcoHealth & Transport Solutions Ltd',
   shortName: 'EcoHealth',
@@ -5,17 +19,17 @@ export const company = {
   country: 'Rwanda',
   hero: {
     eyebrow: 'EcoHealth & Transport Solutions Ltd',
-    headline: 'Building Safer Operations. Protecting People. Sustaining Our Future.',
+    headline: 'Building Safer Operations. Protecting People. Moving Work Forward.',
     subheading:
-      'Practical EHS consultancy, environmental management, workforce training, technical field support, and transport safety solutions for businesses and projects in Rwanda.',
+      'Environment, Health & Safety (EHS) consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional safety training for projects in Rwanda.',
     primaryCta: 'Request a Quote',
     secondaryCta: 'Explore Our Services',
   },
   intro: {
-    headline: 'Where operational safety meets environmental responsibility.',
+    headline: 'Safety expertise and practical support for every worksite.',
     body: [
-      'EcoHealth & Transport Solutions Ltd supports organisations in strengthening workplace safety, managing environmental responsibilities, and delivering field operations responsibly.',
-      'From EHS compliance and environmental management to workforce training and transport safety, we provide practical, risk-based solutions for projects in Rwanda. Regional engagements are considered individually, subject to scope and capacity.',
+      'EcoHealth & Transport Solutions Ltd helps organisations protect people and manage operational risk through EHS consultancy, transport and logistics support, PPE supply, rigging and lifting services, and professional safety training.',
+      'We work with organisations in Rwanda to define practical scopes that fit their sites, teams, and project requirements. Product availability, technical requirements, and delivery arrangements are confirmed for each enquiry.',
     ],
   },
   whyEcoHealth: [
@@ -33,7 +47,9 @@ export type ServiceSlug =
   | 'training-capacity-building'
   | 'telecommunications-field-support'
   | 'transport-fleet-safety'
-  | 'waste-management';
+  | 'waste-management'
+  | 'ppe-supply'
+  | 'rigging-and-lifting-services';
 
 export interface Service {
   slug: ServiceSlug;
@@ -55,12 +71,12 @@ export const services: Service[] = [
   {
     slug: 'ehs-consultancy',
     index: '01',
-    title: 'EHS / HSE Consultancy & Compliance',
-    shortTitle: 'EHS Consultancy',
+    title: 'Environmental Health & Safety (EHS) Consultancy',
+    shortTitle: 'Environmental Health & Safety (EHS) Consultancy',
     summary:
       'Practical environment, health, and safety consultancy that helps organisations identify hazards, satisfy compliance obligations, and build a credible safety culture.',
-    image: 'https://images.pexels.com/photos/8487361/pexels-photo-8487361.jpeg?auto=compress&cs=tinysrgb&w=1400',
-    imageAlt: 'Two engineers in protective gear and hardhats discussing a project inside a building under construction',
+    image: siteImages.fieldDiscussion,
+    imageAlt: 'Field team members discussing work at an active project site',
     intro:
       'Our EHS consultancy supports organisations in managing workplace risks, meeting regulatory requirements, and demonstrating a genuine commitment to safe operations. We work with project teams, contractors, and institutions to put practical safety systems in place.',
     problems: [
@@ -89,17 +105,17 @@ export const services: Service[] = [
       'Site inspection findings and corrective recommendations',
       'Incident investigation reports with improvement actions',
     ],
-    related: ['environmental-management', 'training-capacity-building', 'transport-fleet-safety'],
+    related: ['transport-fleet-safety', 'rigging-and-lifting-services', 'training-capacity-building'],
   },
   {
     slug: 'environmental-management',
-    index: '02',
+    index: '06',
     title: 'Environmental Management & Sustainability',
     shortTitle: 'Environmental Management',
     summary:
       'Environmental management support that helps projects reduce their footprint, meet environmental obligations, and operate responsibly in sensitive contexts.',
-    image: 'https://images.pexels.com/photos/10365944/pexels-photo-10365944.jpeg?auto=compress&cs=tinysrgb&w=1400',
-    imageAlt: 'Group of workers in orange safety vests walking through a lush forest',
+    image: siteImages.fieldCrew,
+    imageAlt: 'Field team wearing high-visibility clothing at a project site',
     intro:
       'We help organisations understand and manage their environmental responsibilities from site-level impacts to broader sustainability commitments. Our focus is practical: environmental management that fits the way your project actually runs.',
     problems: [
@@ -132,13 +148,13 @@ export const services: Service[] = [
   },
   {
     slug: 'training-capacity-building',
-    index: '03',
-    title: 'Training & Capacity Building',
-    shortTitle: 'Training',
+    index: '05',
+    title: 'Professional Safety Training',
+    shortTitle: 'Professional Safety Training',
     summary:
       'Workplace safety, environmental, and operational training designed to build real capability across teams, from frontline workers to supervisors and managers.',
-    image: 'https://images.pexels.com/photos/8761547/pexels-photo-8761547.jpeg?auto=compress&cs=tinysrgb&w=1400',
-    imageAlt: 'Diverse group of business professionals attentively attending a conference session',
+    image: siteImages.siteSafety,
+    imageAlt: 'Workers wearing safety equipment during site work',
     intro:
       'We deliver structured training that builds practical capability in safety, environmental management, and operational discipline. Programmes are tailored to the roles and risks your teams actually face, with a focus on behaviour change rather than certificates alone.',
     problems: [
@@ -169,17 +185,17 @@ export const services: Service[] = [
       'Attendance records where included in the agreed scope',
       'Post-training improvement recommendations where agreed',
     ],
-    related: ['ehs-consultancy', 'environmental-management', 'transport-fleet-safety'],
+    related: ['ehs-consultancy', 'transport-fleet-safety', 'rigging-and-lifting-services'],
   },
   {
     slug: 'telecommunications-field-support',
-    index: '04',
+    index: '07',
     title: 'Telecommunications & Technical Field Support',
     shortTitle: 'Telecom Field Support',
     summary:
       'Technical field support for telecommunications and infrastructure projects, covering deployment, inspection, and safety supervision in the field.',
-    image: 'https://images.pexels.com/photos/19728112/pexels-photo-19728112.jpeg?auto=compress&cs=tinysrgb&w=1400',
-    imageAlt: 'Two workers repairing a cellular tower against a cloudy sky',
+    image: siteImages.siteTeam,
+    imageAlt: 'Field team in safety equipment at an infrastructure project site',
     intro:
       'We scope telecommunications and infrastructure field support to the agreed work, confirmed competence and authorisations, available resources, and project agreements. Tower, antenna, radio, and equipment-change work is undertaken only where those requirements are met.',
     problems: [
@@ -212,15 +228,15 @@ export const services: Service[] = [
   },
   {
     slug: 'transport-fleet-safety',
-    index: '05',
-    title: 'Transport, Fleet Safety & Logistics',
-    shortTitle: 'Transport & Fleet Safety',
+    index: '02',
+    title: 'Transport and Logistics',
+    shortTitle: 'Transport and Logistics',
     summary:
-      'Transport safety and fleet management support that helps organisations move people and materials more safely on site and across the road network.',
-    image: 'https://images.pexels.com/photos/1606957/pexels-photo-1606957.jpeg?auto=compress&cs=tinysrgb&w=1400',
-    imageAlt: 'A row of trucks and car transporters parked at sunset in an open parking lot',
+      'Transport and logistics support for planning the movement of people and materials while managing journey, driver, and fleet risks.',
+    image: siteImages.transportSafety,
+    imageAlt: 'Road safety reminder graphic for drivers',
     intro:
-      'We help organisations manage transport risk from fleet safety policies to driver behaviour and journey planning. Our support is practical and field-oriented, focused on operations in Rwanda; regional engagements are considered individually against scope and capacity.',
+      'We help organisations plan safer movement of people, equipment, and materials through transport risk assessment, journey planning, driver and fleet safety, and logistics coordination. The scope, resources, and delivery arrangements are agreed for each project.',
     problems: [
       'Transport-related incidents affecting people, assets, and schedules',
       'Inconsistent driver standards and journey management practices',
@@ -228,11 +244,12 @@ export const services: Service[] = [
       'Need for structured fleet safety reporting for clients and regulators',
     ],
     offerings: [
+      'Transport planning and logistics coordination scoped to project requirements',
       'Fleet safety policy and procedure development',
       'Driver safety and defensive driving awareness training',
       'Journey management planning',
       'Transport risk assessments',
-      'Vehicle and fleet inspection frameworks',
+      'Vehicle and fleet inspection frameworks where included in scope',
       'Incident reporting and analysis for transport operations',
     ],
     benefits: [
@@ -247,17 +264,17 @@ export const services: Service[] = [
       'Journey management templates',
       'Transport risk assessment reports',
     ],
-    related: ['ehs-consultancy', 'training-capacity-building', 'telecommunications-field-support'],
+    related: ['ehs-consultancy', 'training-capacity-building', 'rigging-and-lifting-services'],
   },
   {
     slug: 'waste-management',
-    index: '06',
+    index: '08',
     title: 'Waste Management & E-Waste Solutions',
     shortTitle: 'Waste & E-Waste',
     summary:
       'Responsible waste management and electronic waste solutions that help organisations handle, segregate, and dispose of waste in compliance with good practice.',
-    image: 'https://images.pexels.com/photos/36751332/pexels-photo-36751332.jpeg?auto=compress&cs=tinysrgb&w=1400',
-    imageAlt: 'Workers sorting waste in a recycling facility, showcasing environmental sustainability efforts',
+    image: siteImages.constructionTeam,
+    imageAlt: 'Project team wearing safety equipment at a construction site',
     intro:
       'We support organisations in planning responsible waste management, including e-waste segregation and disposal coordination. Collection and recycling are arranged through authorised partners where required; formal approvals and regulated work remain with appropriately authorised specialists.',
     problems: [
@@ -288,15 +305,104 @@ export const services: Service[] = [
     ],
     related: ['environmental-management', 'ehs-consultancy', 'training-capacity-building'],
   },
+  {
+    slug: 'ppe-supply',
+    index: '03',
+    title: 'PPE Supply',
+    shortTitle: 'PPE Supply',
+    summary:
+      'Personal protective equipment options selected around workplace hazards, applicable standards, fit, and project requirements.',
+    image: siteImages.ppeEquipment,
+    imageAlt: 'Full-body safety harness and personal protective equipment guidance',
+    intro:
+      'We help organisations identify and source personal protective equipment for their work activities. Product specifications, applicable standards, brands, certification documents, quantities, and availability are confirmed as part of each quotation.',
+    problems: [
+      'Unclear PPE requirements for different tasks and hazards',
+      'Difficulty matching products to applicable specifications',
+      'Inconsistent PPE selection across teams and work locations',
+      'Need to confirm quantities, availability, and delivery before ordering',
+    ],
+    offerings: [
+      'PPE selection support based on task and hazard requirements',
+      'Safety helmets, eye and face protection, gloves, and safety footwear',
+      'High-visibility clothing and hearing protection options',
+      'Fall-protection equipment enquiries, subject to product specification and availability',
+      'Product specifications and supporting documentation for quoted items',
+      'Supply and delivery arrangements confirmed for each order',
+    ],
+    benefits: [
+      'PPE choices aligned with identified work hazards',
+      'Clear product specifications before an order is confirmed',
+      'A consistent process for requesting and reviewing PPE requirements',
+      'Availability and delivery expectations agreed up front',
+    ],
+    deliverables: [
+      'Quotation for the requested PPE items and quantities',
+      'Product specifications and supporting documentation where available',
+      'Confirmed order and delivery details',
+      'PPE selection guidance when included in the agreed scope',
+    ],
+    related: ['ehs-consultancy', 'rigging-and-lifting-services', 'training-capacity-building'],
+  },
+  {
+    slug: 'rigging-and-lifting-services',
+    index: '04',
+    title: 'Rigging and Lifting Services',
+    shortTitle: 'Rigging and Lifting Services',
+    summary:
+      'Project-scoped rigging and lifting support, planned around the load, equipment, worksite conditions, and confirmed personnel competence.',
+    image: siteImages.safetyTraining,
+    imageAlt: 'Lifting and rigging safety training graphic',
+    intro:
+      'We discuss rigging and lifting requirements with project teams and define a scope around the load, lift conditions, equipment, and site controls. Plans, equipment, personnel, authorisations, and any required inspection records are confirmed before work is agreed.',
+    problems: [
+      'Lifting tasks that need clearer planning and site coordination',
+      'Uncertainty about equipment suitability and inspection records',
+      'Worksite hazards that need to be considered before a lift',
+      'Need to coordinate competent personnel and safe-work controls',
+    ],
+    offerings: [
+      'Pre-lift task and worksite hazard reviews',
+      'Lift-plan preparation or review where included in the agreed scope',
+      'Rigging equipment requirements and inspection coordination',
+      'Pre-lift briefings and work-team coordination',
+      'On-site rigging or lifting support only where personnel, equipment, competence, and authorisations are confirmed',
+    ],
+    benefits: [
+      'Lifting requirements considered before work begins',
+      'Clearer coordination of people, equipment, and site controls',
+      'Documented scope and responsibilities for the agreed work',
+      'Better visibility of outstanding approvals or inspection requirements',
+    ],
+    deliverables: [
+      'Agreed scope and lift-related documentation where applicable',
+      'Task hazard review and control actions',
+      'Equipment and personnel requirements for the agreed operation',
+      'Site briefing or completion records where included in scope',
+    ],
+    related: ['ehs-consultancy', 'ppe-supply', 'training-capacity-building'],
+  },
 ];
+
+export const primaryServiceSlugs: ServiceSlug[] = [
+  'ehs-consultancy',
+  'transport-fleet-safety',
+  'ppe-supply',
+  'rigging-and-lifting-services',
+  'training-capacity-building',
+];
+
+export const primaryServices: Service[] = primaryServiceSlugs
+  .map((slug) => services.find((service) => service.slug === slug))
+  .filter((service): service is Service => Boolean(service));
 
 export const about = {
   mission:
-    'To support organisations in Rwanda with practical safety, environmental, and operational solutions that protect people, reduce harm, and strengthen performance, while considering regional engagements individually.',
+    'To support organisations in Rwanda with practical safety consultancy, PPE, lifting and logistics support, and professional training that protect people and strengthen operations.',
   vision:
-    'To be a trusted partner for businesses and institutions seeking safer operations, responsible environmental management, and sustainable growth.',
+    'To be a trusted partner for organisations seeking safer worksites and dependable operational support.',
   description:
-    'EcoHealth & Transport Solutions Ltd is a Rwanda-based company offering environment, health, and safety consultancy, environmental management, training, telecommunications field support, transport safety, and waste management support. The scope of each engagement is agreed to match project needs, available resources, and any required professional authorisations.',
+    'EcoHealth & Transport Solutions Ltd is a Rwanda-based company offering Environment, Health & Safety (EHS) consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional safety training. Each engagement is scoped to project needs, available resources, and applicable competence and authorisation requirements.',
   coreValues: [
     { title: 'Safety first', body: 'The protection of people guides every decision we make and every recommendation we give.' },
     { title: 'Integrity', body: 'We give honest, evidence-based advice even when it is not the easiest message to deliver.' },
@@ -315,13 +421,13 @@ export const about = {
 
 export const partnersContent = {
   intro:
-    'EcoHealth & Transport Solutions Ltd welcomes enquiries from contractors, principals, procurement teams, and organisations seeking a potential local partner for safety, environmental, and field operations in Rwanda.',
+    'EcoHealth & Transport Solutions Ltd welcomes enquiries from contractors, principals, procurement teams, and organisations seeking a local partner for EHS, transport and logistics, PPE, rigging and lifting, or safety training in Rwanda.',
   subcontracting: [
-    'EHS and safety supervision support for active projects',
-    'Environmental management and monitoring on site',
-    'Technical field support for telecommunications and infrastructure work',
-    'Workforce training scoped to project-specific risks',
-    'Transport and fleet safety support for logistics operations',
+    'EHS consultancy and safety supervision',
+    'Transport and logistics support scoped to project requirements',
+    'PPE sourcing and supply enquiries',
+    'Rigging and lifting support, subject to confirmed scope and competence',
+    'Professional safety training for project teams',
   ],
   procurement: [
     'Clear, documented scope and deliverables for tender responses',
@@ -430,12 +536,11 @@ export interface NavItem {
 export const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
   { label: 'About Us', path: '/about' },
-  { label: 'Services', path: '/services' },
-  { label: 'Training', path: '/training' },
-  { label: 'Projects', path: '/projects' },
-  { label: 'Insights', path: '/insights' },
-  { label: 'Partners', path: '/partners' },
-  { label: 'Contact', path: '/contact' },
+  ...primaryServices.map((service) => ({
+    label: service.title,
+    path: `/services/${service.slug}`,
+  })),
+  { label: 'Contact Us', path: '/contact' },
 ];
 
 export const footerNav = [
@@ -445,18 +550,17 @@ export const footerNav = [
       { label: 'About Us', path: '/about' },
       { label: 'Projects & Experience', path: '/projects' },
       { label: 'Partners & Procurement', path: '/partners' },
-      { label: 'Contact', path: '/contact' },
+      { label: 'Contact Us', path: '/contact' },
     ],
   },
   {
     title: 'Services',
     links: [
-      { label: 'EHS Consultancy', path: '/services/ehs-consultancy' },
-      { label: 'Environmental Management', path: '/services/environmental-management' },
-      { label: 'Training & Capacity Building', path: '/services/training-capacity-building' },
-      { label: 'Telecom Field Support', path: '/services/telecommunications-field-support' },
-      { label: 'Transport & Fleet Safety', path: '/services/transport-fleet-safety' },
-      { label: 'Waste & E-Waste', path: '/services/waste-management' },
+      { label: 'Environmental Health & Safety (EHS) Consultancy', path: '/services/ehs-consultancy' },
+      { label: 'Transport and Logistics', path: '/services/transport-fleet-safety' },
+      { label: 'PPE Supply', path: '/services/ppe-supply' },
+      { label: 'Rigging and Lifting Services', path: '/services/rigging-and-lifting-services' },
+      { label: 'Professional Safety Training', path: '/services/training-capacity-building' },
     ],
   },
 ];
@@ -468,4 +572,6 @@ export const servicePaths: Record<string, string> = {
   'telecommunications-field-support': '/services/telecommunications-field-support',
   'transport-fleet-safety': '/services/transport-fleet-safety',
   'waste-management': '/services/waste-management',
+  'ppe-supply': '/services/ppe-supply',
+  'rigging-and-lifting-services': '/services/rigging-and-lifting-services',
 };

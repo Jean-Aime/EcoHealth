@@ -3,12 +3,12 @@ import { Reveal } from '@/components/Reveal';
 import { PageHero, ServiceCTA } from '@/components/PageHero';
 import { SEO } from '@/components/SEO';
 import { EnquiryForm } from '@/components/EnquiryForm';
-import { partnersContent } from '@/data/content';
+import { partnersContent, siteImages } from '@/data/content';
 import { useSiteSettings } from '@/lib/cms';
 import { ArtImage, ArrowLink, SectionMarker } from '@/components/motion';
 
-const heroImage = 'https://images.pexels.com/photos/8487399/pexels-photo-8487399.jpeg?auto=compress&cs=tinysrgb&w=1800';
-const partnershipImage = 'https://images.pexels.com/photos/8487361/pexels-photo-8487361.jpeg?auto=compress&cs=tinysrgb&w=1400';
+const heroImage = siteImages.siteTeam;
+const partnershipImage = siteImages.fieldDiscussion;
 
 export function PartnersPage() {
   const settings = useSiteSettings();
@@ -17,7 +17,7 @@ export function PartnersPage() {
     <>
       <SEO
         title="Partners & Procurement | EcoHealth & Transport Solutions Ltd"
-        description="EcoHealth works with contractors, principals, and procurement teams as a specialist partner for safety, environmental, and field operations in Rwanda."
+        description="EcoHealth works with contractors and procurement teams on EHS, transport and logistics, PPE, rigging and lifting, and safety training scopes in Rwanda."
         path="/partners"
       />
 
@@ -27,7 +27,7 @@ export function PartnersPage() {
         titleLines={['A capable local', 'partner for contractors', 'and procurement teams.']}
         subtitle={partnersContent.intro}
         image={heroImage}
-        imageAlt="Two engineers in helmets and safety vests on site"
+        imageAlt="EcoHealth field team wearing safety equipment at a project site"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'Partners & procurement' }]}
         variant="split"
         index="06"
@@ -46,13 +46,13 @@ export function PartnersPage() {
                     Specialist scopes, delivered as part of your team.
                   </h2>
                   <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">
-                    We engage as a subcontractor on prime contractor projects, providing safety, environmental,
-                    training, technical field, and transport safety support under your overall programme.
+                    We engage as a subcontractor on prime contractor projects, providing EHS, transport and logistics,
+                    PPE, rigging and lifting, and safety training support within an agreed programme.
                   </p>
                   <div className="mt-8">
                     <ArtImage
                       src={partnershipImage}
-                      alt="Two engineers reviewing a project on site"
+                      alt="Field team members discussing work at an active project site"
                       sizes="(min-width: 1024px) 40vw, 100vw"
                       width={1200}
                       height={900}
@@ -180,7 +180,7 @@ export function PartnersPage() {
                 {[
                   {
                     title: 'For prime contractors',
-                    body: 'We provide subcontracted safety, environmental, field, and training scopes, integrated into your project team and reporting structure.',
+                    body: 'We provide EHS, transport and logistics, PPE, lifting, and training scopes integrated into your project team and reporting structure.',
                   },
                   {
                     title: 'For procurement teams',

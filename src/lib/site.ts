@@ -9,7 +9,7 @@ export const SITE_URL = (import.meta.env.VITE_SITE_URL || 'https://www.ecohealth
 export const SITE_NAME = 'EcoHealth & Transport Solutions Ltd';
 export const SITE_TAGLINE = 'Safe People. Healthy Environment. Sustainable Future.';
 export const SITE_DESCRIPTION =
-  'Practical EHS consultancy, environmental management, workforce training, technical field support, and transport safety solutions for businesses and projects in Rwanda.';
+  'EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional safety training for projects in Rwanda.';
 
 export const DEFAULT_OG_IMAGE = '/og-image.png';
 

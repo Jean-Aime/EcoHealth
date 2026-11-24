@@ -3,18 +3,18 @@ import { Reveal } from '@/components/Reveal';
 import { PageHero } from '@/components/PageHero';
 import { CTASection } from '@/components/CTASection';
 import { SEO } from '@/components/SEO';
-import { about, company } from '@/data/content';
+import { about, company, siteImages } from '@/data/content';
 import { ArtImage, ArrowLink, LineReveal, SectionMarker } from '@/components/motion';
 
-const heroImage = 'https://images.pexels.com/photos/8487399/pexels-photo-8487399.jpeg?auto=compress&cs=tinysrgb&w=1800';
-const approachImage = 'https://images.pexels.com/photos/8487361/pexels-photo-8487361.jpeg?auto=compress&cs=tinysrgb&w=1400';
+const heroImage = siteImages.brandedHelmet;
+const approachImage = siteImages.fieldDiscussion;
 
 export function AboutPage() {
   return (
     <>
       <SEO
         title="About Us | EcoHealth & Transport Solutions Ltd"
-        description="EcoHealth & Transport Solutions Ltd is a Rwanda-based company providing EHS consultancy, environmental management, training, and transport safety solutions."
+        description="EcoHealth & Transport Solutions Ltd provides EHS consultancy, transport and logistics, PPE supply, rigging and lifting services, and professional safety training in Rwanda."
         path="/about"
       />
 
@@ -24,11 +24,11 @@ export function AboutPage() {
         titleLines={['A practical', 'partner for safer,', 'more responsible', 'operations.']}
         subtitle="We focus on supporting organisations in Rwanda. Regional engagements are considered individually, subject to the agreed scope and available capacity."
         image={heroImage}
-        imageAlt="Two engineers in helmets and safety vests standing on site"
+        imageAlt="EcoHealth branding on a safety helmet"
         breadcrumb={[{ label: 'Home', path: '/' }, { label: 'About us' }]}
         variant="split"
         index="01"
-        meta={['Rwanda-based', 'EHS · Environment · Transport', 'Advisory & field delivery']}
+        meta={['Rwanda-based', 'EHS · Logistics · PPE', 'Lifting · Safety training']}
       />
 
       {/* Company statement */}
@@ -39,8 +39,8 @@ export function AboutPage() {
               <Reveal>
                 <SectionMarker index="02" label="Company overview" />
                 <p className="mt-7 max-w-[14rem] text-sm leading-relaxed text-muted">
-                  A single partner across EHS, environmental management, training, transport safety, and field
-                  operations.
+                  A single partner for EHS consultancy, transport and logistics, PPE, rigging and lifting, and safety
+                  training.
                 </p>
               </Reveal>
             </div>
@@ -55,7 +55,7 @@ export function AboutPage() {
               <div className="mt-12 grid gap-8 border-t border-charcoal/15 pt-8 sm:grid-cols-3">
                 {[
                   { label: 'Based in', value: company.country, note: 'Regional work scoped individually' },
-                  { label: 'Disciplines', value: 'Six', note: 'Integrated service lines' },
+                  { label: 'Services', value: 'Five', note: 'Integrated service lines' },
                   { label: 'Engagement', value: 'Scoped', note: 'Advisory to embedded support' },
                 ].map((item, index) => (
                   <Reveal key={item.label} delay={((index % 3) + 1) as 1 | 2 | 3}>
@@ -157,7 +157,7 @@ export function AboutPage() {
                   <div className="mt-8">
                     <ArtImage
                       src={approachImage}
-                      alt="Two engineers in protective equipment discussing a project inside a building under construction"
+                      alt="Field team members discussing work at an active project site"
                       sizes="(min-width: 1024px) 40vw, 100vw"
                       width={1200}
                       height={900}
